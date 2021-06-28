@@ -19,6 +19,7 @@ namespace TantosHousingProject.Models.Data
         public string OpExpenseItem { get; set; }
 
         [Required]
+        [DataType(DataType.Currency)]
         public int OpExpenseAmount { get; set; }
 
 

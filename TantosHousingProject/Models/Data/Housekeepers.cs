@@ -35,6 +35,7 @@ namespace TantosHousingProject.Models.Data
         public int HousekeeperRemainingLeave { get; set; }
 
         [Required]
+        [DataType(DataType.Currency)]
         public int HousekeeperSalary { get; set; }
 
         public DateTime SalaryPaidDate { get; set; }

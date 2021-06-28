@@ -15,6 +15,7 @@ namespace TantosHousingProject.Models.Data
         public string RoomType { get; set; }
 
         [Required]
+        [DataType(DataType.Currency)]
         public int RoomPrice { get; set; }
 
         [Required]
@@ -27,6 +28,7 @@ namespace TantosHousingProject.Models.Data
 
         public DateTime PaymentDate { get; set; }
 
+        [DataType(DataType.Currency)]
         public int PaymentAmount { get; set; }
 
         [Required]

@@ -19,8 +19,10 @@ namespace TantosHousingProject.Models.Data
         public string PettyCashItem { get; set; }
 
         [Required]
+        [DataType(DataType.Currency)]
         public int PettyCashAmount { get; set; }
 
+        [DataType(DataType.Currency)]
         [Required]
         public int PettyCashBalance { get; set; }
 

@@ -6,8 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Models\Service\" />
-    <Folder Include="Models\ViewModel\" />
-    <Folder Include="Models\Repo\" />
   </ItemGroup>
 
 </Project>
