@@ -15,13 +15,13 @@ namespace TantosHousingProject.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult CreatePropertyView()
         {
             return View(new CreatePropertyViewModel());
         }
 
         [HttpPost]
-        public IActionResult Create(CreatePropertyViewModel createProperty)
+        public IActionResult CreatePropertyView(CreatePropertyViewModel createProperty)
         {
             if (ModelState.IsValid)
             {
