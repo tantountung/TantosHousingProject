@@ -3,34 +3,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TantosHousingProject.Models.Data;
+using TantosHousingProject.Models.Repo;
 using TantosHousingProject.Models.ViewModel;
 
 namespace TantosHousingProject.Models.Service
 {
-    public class PropertyService
+    public class PropertyService : IPropertyService
     {
-        static List<Property> propertyList = new List<Property>();
+        IPropertyRepo _propertyRepo;
 
-        public Property AddProperty (CreatePropertyViewModel createProperty)
+        public PropertyService(IPropertyRepo propertyRepo)
         {
-
-            Property property = new Property();
-
-            property.PropertyId = createProperty.PropertyId;
-            property.PropertyName = createProperty.PropertyName;
-            property.PropertyAddress = createProperty.PropertyAddress;
-            property.YearBuilt = createProperty.YearBuilt;
-            property.PropertyTaxNumber = createProperty.PropertyTaxNumber;
-
-            propertyList.Add(property);
-
-            return property;
+            _propertyRepo = new PropertyRepo();
         }
 
-        public List<Property> GetAll()
+        public Property Add(CreatePropertyViewModel createProperty)
         {
-            return propertyList;
+            Property person1 = _propertyRepo.Create(createProperty);
+
+            return person1;            
         }
 
+        public PropertyIndexViewModel All()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Property Edit(int id, CreatePropertyViewModel createProperty)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Property FindById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Property> FindByName(string propertyName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Remove(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
+       

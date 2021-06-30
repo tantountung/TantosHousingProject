@@ -11,7 +11,7 @@ namespace TantosHousingProject.Models.ViewModel
     {
         [Key]
         [Required]
-        public string PropertyId { get; set; }
+        public int PropertyId { get; set; }
 
 
         [Required]
