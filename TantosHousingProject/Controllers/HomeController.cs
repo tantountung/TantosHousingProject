@@ -23,6 +23,11 @@ namespace TantosHousingProject.Controllers
             return View();
         }
 
+        public IActionResult PropertyInfo()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

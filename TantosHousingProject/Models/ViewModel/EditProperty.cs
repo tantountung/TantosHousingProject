@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TantosHousingProject.Models.Data;
 
 namespace TantosHousingProject.Models.ViewModel
 {
-    public class PropertyIndexViewModel
+    public class EditProperty
     {
-        
-        public List<Property> PropertyList { get; set; }
+        public int Id { get; set; }
+        public CreatePropertyViewModel CreateProperty { get; set; }
     }
 }
