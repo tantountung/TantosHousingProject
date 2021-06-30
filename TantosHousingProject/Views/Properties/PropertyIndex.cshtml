@@ -1,0 +1,26 @@
+﻿@model List<Property>
+
+@{
+    ViewData["Title"] = "Property List";
+}
+
+<a asp-action="CreatePropertyView">Create New Property</a>
+
+<h1>Property List</h1>
+
+<table>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.PropertyId</td>
+        <td>@item.PropertyName</td>
+        <td>@item.PropertyAddress</td>
+        <td>@item.YearBuilt</td>
+        <td>@item.PropertyTaxNumber</td>
+    </tr>
+    }
+
+</table>
+
+

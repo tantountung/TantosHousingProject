@@ -3,15 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TantosHousingProject.Models.Service;
 using TantosHousingProject.Models.ViewModel;
 
 namespace TantosHousingProject.Controllers
 {
     public class PropertiesController : Controller
     {
-        public IActionResult Index()
+        PropertyService _propertyService = new PropertyService();
+
+        public IActionResult PropertyIndex()
         {
-            return View();
+            return View(_propertyService.GetAll());
         }
 
         [HttpGet]
@@ -25,7 +28,9 @@ namespace TantosHousingProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                _propertyService.AddProperty(createProperty);
 
+                return RedirectToAction(nameof(PropertyIndex));
             }
 
             return View(createProperty);

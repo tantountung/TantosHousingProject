@@ -6,7 +6,28 @@
 <h1>Create Property</h1>
 
 <form asp-action="CreatePropertyView" asp-controller="Properties" method="post">
-    <label asp-for=""></label>
 
+    <label asp-for="PropertyId"></label>
+    <input asp-for="PropertyId" />
+    <span asp-validation-for="PropertyId"></span>
 
-</form>
+    <label asp-for="PropertyName"></label>
+    <input asp-for="PropertyName" />
+    <span asp-validation-for="PropertyName"></span>
+
+    <label asp-for="PropertyAddress"></label>
+    <input asp-for="PropertyAddress" />
+    <span asp-validation-for="PropertyAddress"></span>
+
+    <label asp-for="YearBuilt"></label>
+    <input asp-for="YearBuilt" />
+    <span asp-validation-for="YearBuilt"></span>
+
+    <label asp-for="PropertyTaxNumber"></label>
+    <input asp-for="PropertyTaxNumber" />
+    <span asp-validation-for="PropertyTaxNumber"></span>
+
+    <button>Create Property</button>
+    <button type="reset">Reset</button>
+
+</form> 
