@@ -1,0 +1,19 @@
+﻿@model List<Room>
+@{
+    ViewData["Title"] = "Room Index";
+}
+
+<a asp-action="CreateRoom">Create New Room</a>
+
+<h1>Room List</h1>
+
+<table>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.RoomType</td>
+        <td>@item.RoomPrice</td>
+    </tr>
+    }
+
+</table>

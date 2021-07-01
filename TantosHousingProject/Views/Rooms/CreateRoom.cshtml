@@ -1,0 +1,25 @@
+﻿@model CreateRoomViewModel
+@{
+    ViewData["Title"] = "Create Room";
+}
+
+<h1>Create New Room</h1>
+
+<form asp-action="CreateRoom" asp-controller="Rooms" method="post">
+    <label asp-for="RoomType"></label>
+    <select asp-for="RoomType">
+        <option value="" disabled>Select Room Type</option>
+        @foreach (string item in Model.TypeList)
+        {
+            <option value="@item">@item</option>
+        }
+    </select>
+    <span asp-validation-for="RoomType"></span>
+
+    <label asp-for="RoomPrice"> </label>
+    <input asp-for="RoomPrice" />
+    <span asp-validation-for="RoomPrice"></span>
+
+    <button>Create</button>
+    <button type="reset">Reset</button>
+</form>

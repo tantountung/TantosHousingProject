@@ -9,9 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TantosHousingProject.Models.Repo;
-using TantosHousingProject.Models.Service;
-using TantosHousingProject.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace TantosHousingProject
