@@ -12,9 +12,18 @@ namespace TantosHousingProject.Controllers
     public class RoomsController : Controller
     {
         RoomService _roomService = new RoomService();
+
         public IActionResult RoomIndex()
         {
-            return View(_roomService.GetAll());
+            return View(_roomService.All());
+        }
+
+        [HttpPost]
+        public IActionResult RoomIndex(RoomIndexViewModel vm)
+        {
+            vm.RoomList = _roomService.FindByType(vm.FilterText);
+
+            return View(vm);
         }
 
         [HttpGet]
@@ -28,10 +37,22 @@ namespace TantosHousingProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                _roomService.AddRoom(createRoom);
+                _roomService.Add(createRoom);
             }
 
             return View(createRoom);
+        }
+
+        public IActionResult Details(int id)
+        {
+            Room room = _roomService.FindByRoomNumber(id);
+
+            if (room == null)
+            {
+                return RedirectToAction("RoomIndex");
+            }
+
+            return View(room);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model List<Room>
+﻿@model RoomIndexViewModel
 @{
     ViewData["Title"] = "Room Index";
 }
@@ -7,8 +7,15 @@
 
 <h1>Room List</h1>
 
+<form asp-action="RoomIndex" method="post">
+    <label asp-for="FilterText"></label>
+    <input asp-for="FilterText" />
+    <input type="submit"  value="Filter By RoomType" />
+</form>
+
+
 <table>
-    @foreach (var item in Model)
+    @foreach (var item in Model.RoomList)
     {
     <tr>
         <td>@item.RoomType</td>
