@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TantosHousingProject.Models.Repo
 {
-    public interface IGenericRepo <ModelType model>
+    public interface IGenericRepo <ModelType>
     {
         ModelType Create(ModelType model);
 

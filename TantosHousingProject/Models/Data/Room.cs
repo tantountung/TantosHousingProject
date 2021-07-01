@@ -12,6 +12,7 @@ namespace TantosHousingProject.Models.Data
         public int RoomNumber { get; set; }
 
         [Required]
+        [MaxLength(20)]
         public string RoomType { get; set; }
 
         [Required]

@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TantosHousingProject.Models.Data;
 
 namespace TantosHousingProject.Models.Repo
 {
-    public class PettyCashRepo : IGenericRepo<PettyCash, CreatePettyCashViewModel>
+    public class RoomTypeRepo : IRoomTypeRepo
     {
-        public PettyCash Create(CreatePettyCashViewModel create)
+        public RoomType Create(RoomType roomType)
         {
             throw new NotImplementedException();
         }
@@ -18,17 +17,17 @@ namespace TantosHousingProject.Models.Repo
             throw new NotImplementedException();
         }
 
-        public PettyCash Read(int id)
+        public RoomType Read(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<PettyCash> Read()
+        public List<RoomType> Read()
         {
             throw new NotImplementedException();
         }
 
-        public PettyCash Update(PettyCash model)
+        public RoomType Update(RoomType roomType)
         {
             throw new NotImplementedException();
         }

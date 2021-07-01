@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TantosHousingProject.Models.Data;
 using TantosHousingProject.Models.Repo;
+using TantosHousingProject.Models.ViewModel;
 
 namespace TantosHousingProject.Models.Service
 {
@@ -16,68 +17,78 @@ namespace TantosHousingProject.Models.Service
         {
             _roomRepo = roomRepo;
         }
-
-        public CarIndexViewModel All()
+        
+        public Room Add(CreateRoomViewModel createRoom)
         {
-            CarIndexViewModel indexViewModel = new CarIndexViewModel();
+            Room room = new Room();
 
-            indexViewModel.CarList = _carRepo.Read();
+            room.RoomType = createRoom.RoomType;
+            room.RoomPrice = createRoom.RoomPrice;
 
-            return indexViewModel;
+            room = _roomRepo.Create(room);
+
+            return room;
         }
 
-        public Room FindById(int id)
+        public RoomIndexViewModel All()
         {
-            return _carRepo.Read(id);
+            RoomIndexViewModel vm = new RoomIndexViewModel();
+
+            vm.RoomList = _roomRepo.Read();
+
+            return vm;
+        }
+               
+        public Room FindByRoomNumber(int id)
+        {
+            return _roomRepo.Read(id);
         }
 
-        public List<Room> FindByBrand(string brand)
+        public List<Room> FindByType(string type)
         {
-            List<Room> carBrandList = new List<Room>();
+            List<Room> roomTypeList = new List<Room>();
 
-            foreach (Room item in _carRepo.Read())
+            foreach (Room item in _roomRepo.Read())
             {
-                if (item.Brand.Equals(brand))
+                if (item.RoomType.Equals(type))
                 {
-                    carBrandList.Add(item);
+                    roomTypeList.Add(item);
                 }
             }
 
-            return carBrandList;
+            return roomTypeList;
         }
 
-        public Room Edit(int id, CreateCar Room)
+ public Room Edit(int id, CreateRoomViewModel room)
         {
-            Room originalCar = FindById(id);
+            Room editRoom = FindByRoomNumber(id);
 
-            if (originalCar == null)
+            if (editRoom == null)
             {
                 return null;
             }
 
-            originalCar.Brand = Room.Brand;
-            originalCar.ModelName = Room.ModelName;
-            originalCar.Price = Room.Price;
+            editRoom.RoomType = room.RoomType;
+            editRoom.RoomPrice = room.RoomPrice;
 
-            originalCar = _carRepo.Update(originalCar);
+            editRoom = _roomRepo.Update(editRoom);
 
-            return originalCar;
+            return editRoom;
         }
 
         public bool Remove(int id)
         {
-            return _carRepo.Delete(id);
+            return _roomRepo.Delete(id);
         }
 
-        public CreateCar CarToCreateCar(Room Room)
-        {
-            CreateCar createCar = new CreateCar(_carBrandRepo);
+        //public CreateRoomViewModel RoomToCreateRoom(Room room)
+        //{
+        //    CreateRoomViewModel vm = new CreateRoomViewModel(_roomTypeRepo);
 
-            createCar.Brand = Room.Brand;
-            createCar.ModelName = Room.ModelName;
-            createCar.Price = Room.Price;
+        //    vm.RoomType = room.RoomType;
+        //    vm.RoomPrice = room.RoomPrice;
 
-            return createCar;
-        }
+        //    return vm;
+        //}
     }
 }

@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TantosHousingProject.Models.Data;
 
 namespace TantosHousingProject.Models.Repo
 {
-    public interface IRoomRepo
+    public interface IRoomTypeRepo
     {
-        Room Create(Room room);
+        RoomType Create(RoomType roomType);
 
-        Room Read(int id);
+        RoomType Read(int id);
 
-        List<Room> Read();
+        List<RoomType> Read();
 
-        Room Update(Room room);
+        RoomType Update(RoomType roomType);
 
         bool Delete(int id);
     }

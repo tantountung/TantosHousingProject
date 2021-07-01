@@ -2,16 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TantosHousingProject.Database;
 using TantosHousingProject.Models.Data;
 
 namespace TantosHousingProject.Models.Repo
 {
-    public class InMemoryRoomRepo : IRoomRepo<Room>
+    public class RoomRepo : IRoomRepo
     {
-        List<Room> roomList = new List<Room>();
+        private readonly THPDbContext tHPDbContext;
+
+        public RoomRepo(THPDbContext tHPDbContext)
+        {
+            this.tHPDbContext = tHPDbContext;
+        }
+
+        //List<Room> roomList = new List<Room>();
+        //int idCounter = 100;
 
         public Room Create(Room model)
         {
+            model.RoomNumber = ++idCounter;
             roomList.Add(model);
 
             return model;

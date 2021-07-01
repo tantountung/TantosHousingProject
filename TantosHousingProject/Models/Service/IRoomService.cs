@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TantosHousingProject.Models.Data;
+using TantosHousingProject.Models.ViewModel;
 
 namespace TantosHousingProject.Models.Service
 {
@@ -12,8 +13,10 @@ namespace TantosHousingProject.Models.Service
         RoomIndexViewModel All();
         Room FindByRoomNumber(int id);
         List<Room> FindByType(string type);
-        Room Edit(int id, CreateRoom room);
-        CreateRoom RoomToCreateRoom(Room room);
-        bool Remove(int id);
+        Room Edit(int id, CreateRoomViewModel room);
+       
+        bool Remove(int id); 
+        
+        //CreateRoomViewModel RoomToCreateRoom(Room room);
     }
 }

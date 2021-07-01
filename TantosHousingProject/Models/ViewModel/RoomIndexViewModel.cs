@@ -6,9 +6,10 @@ using TantosHousingProject.Models.Data;
 
 namespace TantosHousingProject.Models.ViewModel
 {
-    public class PropertyIndexViewModel
+    public class RoomIndexViewModel
     {
-        
-        public List<Property> PropertyList { get; set; }
+        public string FilterText { get; set; }
+
+        public List<Room> RoomList { get; set; }
     }
 }
