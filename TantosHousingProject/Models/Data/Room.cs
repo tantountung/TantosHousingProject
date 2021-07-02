@@ -8,14 +8,16 @@ namespace TantosHousingProject.Models.Data
 {
     public class Room
     {
+        [Key]
+       public int Id { get; set; }
         
-        public int RoomNumber { get; set; }
+        public double RoomNumber { get; set; }
 
         
         public string RoomType { get; set; }
 
       
-        public int RoomPrice { get; set; }
+        //public int RoomPrice { get; set; }
 
         //[Required]
         //public string RoomOccupancy { get; set; }

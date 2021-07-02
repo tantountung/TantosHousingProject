@@ -9,11 +9,11 @@ namespace TantosHousingProject.Models.Repo
     public class RoomRepo : IRoomRepo
     {
         static List<Room> roomList = new List<Room>();
-        static int idCounter = 100;
+        static int idCounter = 0;
 
         public Room Create(Room room)
         {
-            room.RoomNumber = ++idCounter;
+            room.Id = ++idCounter;
             roomList.Add(room);
 
             return room;
@@ -24,7 +24,7 @@ namespace TantosHousingProject.Models.Repo
         {
             foreach (Room item in roomList)
             {
-                if (item.RoomNumber == id)
+                if (item.Id == id)
                 {
                     return item;
                 }
@@ -40,16 +40,16 @@ namespace TantosHousingProject.Models.Repo
 
         public Room Update(Room room)
         {
-            Room newRoom = Read(room.RoomNumber);
+            Room newRoom = Read(room.Id);
 
             if (newRoom == null)
             {
                 return null;
             }
 
+            newRoom.RoomNumber = room.RoomNumber;
             newRoom.RoomType = room.RoomType;
-            newRoom.RoomPrice = room.RoomPrice;
-
+           
             return newRoom;
         }
         

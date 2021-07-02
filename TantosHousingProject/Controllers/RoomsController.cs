@@ -38,6 +38,8 @@ namespace TantosHousingProject.Controllers
             if (ModelState.IsValid)
             {
                 _roomService.Add(createRoom);
+
+                return RedirectToAction(nameof(RoomIndex));
             }
 
             return View(createRoom);
@@ -45,7 +47,7 @@ namespace TantosHousingProject.Controllers
 
         public IActionResult Details(int id)
         {
-            Room room = _roomService.FindByRoomNumber(id);
+            Room room = _roomService.FindById(id);
 
             if (room == null)
             {

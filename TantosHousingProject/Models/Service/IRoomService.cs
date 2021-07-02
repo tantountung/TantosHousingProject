@@ -13,7 +13,7 @@ namespace TantosHousingProject.Models.Service
 
         RoomIndexViewModel All();
 
-        Room FindByRoomNumber(int id);
+        Room FindById(int id);
 
 
         List<Room> FindByType(string type);

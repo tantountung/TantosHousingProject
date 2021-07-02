@@ -22,9 +22,9 @@ namespace TantosHousingProject.Models.Service
         {
             Room room = new Room();
 
+            room.RoomNumber = createRoom.RoomNumber;
             room.RoomType = createRoom.RoomType;
-            room.RoomPrice = createRoom.RoomPrice;
-
+           
             room = _roomRepo.Create(room);
 
             return room;
@@ -40,7 +40,7 @@ namespace TantosHousingProject.Models.Service
         }
        
 
-        public Room FindByRoomNumber(int id)
+        public Room FindById(int id)
         {
             return _roomRepo.Read(id);
         }
@@ -62,15 +62,15 @@ namespace TantosHousingProject.Models.Service
 
  public Room Edit(int id, CreateRoomViewModel room)
         {
-            Room oriRoom = FindByRoomNumber(id);
+            Room oriRoom = FindById(id);
 
             if (oriRoom == null)
             {
                 return null;
             }
 
-            oriRoom.RoomType = room.RoomType;
-            oriRoom.RoomPrice = room.RoomPrice;
+            oriRoom.RoomNumber = room.RoomNumber;
+            oriRoom.RoomType = room.RoomType;       
 
             oriRoom = _roomRepo.Update(oriRoom);
 

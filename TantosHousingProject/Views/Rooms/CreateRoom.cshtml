@@ -5,6 +5,12 @@
 
 <h1>Create New Room</h1>
 
+
+<label asp-for="RoomNumber"></label>
+<input asp-for="RoomNumber" />
+<span asp-validation-for="RoomNumber"></span>
+
+
 <form asp-action="CreateRoom" asp-controller="Rooms" method="post">
     <label asp-for="RoomType"></label>
     <select asp-for="RoomType">
@@ -15,10 +21,6 @@
         }
     </select>
     <span asp-validation-for="RoomType"></span>
-
-    <label asp-for="RoomPrice"> </label>
-    <input asp-for="RoomPrice" />
-    <span asp-validation-for="RoomPrice"></span>
 
     <button>Create</button>
     <button type="reset">Reset</button>

@@ -10,30 +10,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using TantosHousingProject.Database;
+using TantosHousingProject.Models.Service;
+using TantosHousingProject.Models.Repo;
 
 namespace TantosHousingProject
 {
     public class Startup
-    {
+    {  
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+     
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<THPDbContext>(options => options.
-            //UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //----------------- connection to database--------------------
+            services.AddDbContext<THPDbContext>(options => options.
+            UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            ////-----------------services IOC-----------------------
-            //services.AddScoped<IRoomService, RoomService>();
 
-            ////------------------repo IOC-----------------------------
-            //services.AddScoped<IRoomRepo, RoomRepo>();
-            //services.AddScoped<IRoomTypeRepo, RoomTypeRepo>();
+            //---------------- services IOC ----------------------------
+            services.AddScoped<IRoomService, RoomService>();
+
+
+            //----------------- repo IOC -------------------------------
+            services.AddScoped<IRoomRepo, RoomRepo>();
+
 
             services.AddMvc();
         }
