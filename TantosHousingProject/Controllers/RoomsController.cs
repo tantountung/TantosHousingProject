@@ -56,5 +56,32 @@ namespace TantosHousingProject.Controllers
 
             return View(room);
         }
+
+        [HttpGet]
+        public IActionResult EditRoom(int id)
+        {
+            Room room = _roomService.FindById(id);
+
+            if (room == null)
+            {
+                return RedirectToAction("RoomIndex");
+            }
+
+            return View(room);
+        }
+
+        [HttpPost]
+        public IActionResult EditRoom(CreateRoomViewModel createRoom)
+        {
+            if (ModelState.IsValid)
+            {
+                _roomService.Add(createRoom);
+
+                return RedirectToAction(nameof(RoomIndex));
+            }
+
+            return View(createRoom);
+        }
+
     }
 }

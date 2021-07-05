@@ -15,12 +15,26 @@
 
 
 <table>
-    @foreach (var item in Model.RoomList)
-    {
-    <tr>
-        <td>@item.RoomNumber</td>
-        <td>@item.RoomType</td>
-    </tr>
-    }
+    <thead>
+        <tr>
+            <th>Room Number</th>
+            <th>Room Type</th>
+            <th>Action</th>
+        </tr>
 
+    </thead> 
+    
+    <tbody>
+
+        @foreach (var item in Model.RoomList)
+        {
+            <tr>
+                <td>@item.RoomNumber</td>
+                <td>@item.RoomType</td>
+                <td><a asp-action="Edit" asp-route-id="@item.Id">Edit </a></td>
+            </tr>
+        }
+
+    </tbody>
+       
 </table>

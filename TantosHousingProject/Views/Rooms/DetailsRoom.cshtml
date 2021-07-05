@@ -1,0 +1,18 @@
+﻿@model Room
+@{
+    ViewData["Title"] = "Details Room";
+}
+
+<h1>Room Details</h1>
+
+<dl>
+    <dt>Room Number</dt>
+    <dd>@Model.RoomNumber</dd>
+    <dt>Room Type</dt>
+    <dd>@Model.RoomType</dd>
+   
+
+<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+<a asp-action="RoomIndex">Back To List</a>
+
+</dl>
