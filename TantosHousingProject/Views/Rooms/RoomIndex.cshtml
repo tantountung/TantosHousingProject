@@ -10,31 +10,43 @@
 <form asp-action="RoomIndex" method="post">
     <label asp-for="FilterText"></label>
     <input asp-for="FilterText" />
-    <input type="submit"  value="Filter By RoomType" />
+    <input type="submit" value="Filter By RoomType" />
 </form>
 
 
-<table>
-    <thead>
-        <tr>
-            <th>Room Number</th>
-            <th>Room Type</th>
-            <th>Action</th>
-        </tr>
+<div class="row">
+    <div class="col-12">
 
-    </thead> 
-    
-    <tbody>
+        <div class="row">
+            <div class="col-4">
+                <h5>Room Number</h5>
+            </div>
+            <div class="col-4">
+                <h5>Room Type</h5>
+            </div>
+            <div class="col-4">
+                <h5>Action</h5>
+            </div>
+        </div>
 
         @foreach (var item in Model.RoomList)
         {
-            <tr>
-                <td>@item.RoomNumber</td>
-                <td>@item.RoomType</td>
-                <td><a asp-action="Edit" asp-route-id="@item.Id">Edit </a></td>
-            </tr>
+            <div class="row">
+                <div class="col-4">
+                    <p>@item.RoomNumber</p>
+                </div>
+                <div class="col-4">
+                    <p>@item.RoomType</p>
+                </div>
+                <div class="col-4">
+                    <a  class="btn btn-info"  asp-action="DetailsRoom" asp-route-id="@item.Id">Details Room</a>
+                </div>
+            </div>
         }
 
-    </tbody>
-       
-</table>
+    </div>
+</div>
+
+
+
+

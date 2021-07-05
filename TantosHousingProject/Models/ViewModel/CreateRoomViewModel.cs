@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+//using Microsoft.AspNetCore.Mvc.ModelBinding.IModelBinder;
 
 namespace TantosHousingProject.Models.ViewModel
 {
     public class CreateRoomViewModel
     {     
         [Required]
+        //[ModelBinder(BinderType = typeof(DoubleBinder))]
         public double RoomNumber { get; set; }
 
         [Required]
@@ -28,5 +30,12 @@ namespace TantosHousingProject.Models.ViewModel
                 "Standard"
             };
         }
+
+        //public CreateRoomViewModel()
+        //{
+        //    //zaro constructor
+        //}
+
+
     }
 }

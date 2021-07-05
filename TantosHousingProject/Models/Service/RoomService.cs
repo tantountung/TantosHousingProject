@@ -80,5 +80,15 @@ namespace TantosHousingProject.Models.Service
         {
             return _roomRepo.Delete(id);
         }
+
+        public CreateRoomViewModel RoomToCreateRoom(Room room)
+        {
+            CreateRoomViewModel createRoom = new CreateRoomViewModel();
+
+            createRoom.RoomNumber = room.RoomNumber;
+            createRoom.RoomType = room.RoomType;
+
+            return createRoom;
+        }
     }
 }

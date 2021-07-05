@@ -20,6 +20,8 @@ namespace TantosHousingProject.Models.Service
 
         Room Edit(int id, CreateRoomViewModel room);
 
+        CreateRoomViewModel RoomToCreateRoom(Room room);
+
         bool Remove(int id);
 
 

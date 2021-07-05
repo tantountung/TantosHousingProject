@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +46,7 @@ namespace TantosHousingProject.Controllers
             return View(createRoom);
         }
 
-        public IActionResult Details(int id)
+        public IActionResult DetailsRoom(int id)
         {
             Room room = _roomService.FindById(id);
 
@@ -67,20 +68,28 @@ namespace TantosHousingProject.Controllers
                 return RedirectToAction("RoomIndex");
             }
 
-            return View(room);
+            EditRoomViewModel editRoom = new EditRoomViewModel();
+            editRoom.Id = id;
+            editRoom.CreateRoom = _roomService.RoomToCreateRoom(room);
+
+            return View(editRoom);
         }
 
         [HttpPost]
-        public IActionResult EditRoom(CreateRoomViewModel createRoom)
+        public IActionResult EditRoom(int id, CreateRoomViewModel createRoom)
         {
             if (ModelState.IsValid)
             {
-                _roomService.Add(createRoom);
+                Room room = _roomService.Edit(id, createRoom);
 
                 return RedirectToAction(nameof(RoomIndex));
             }
 
-            return View(createRoom);
+            EditRoomViewModel editRoom = new EditRoomViewModel();
+            editRoom.Id = id;
+            editRoom.CreateRoom = createRoom;
+
+            return View(editRoom);
         }
 
     }
