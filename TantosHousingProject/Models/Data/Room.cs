@@ -11,9 +11,12 @@ namespace TantosHousingProject.Models.Data
         [Key]
        public int Id { get; set; }
         
+        [Required]
         public double RoomNumber { get; set; }
 
         
+        [Required]
+        [MaxLength(20)]
         public string RoomType { get; set; }
 
       

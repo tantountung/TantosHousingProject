@@ -12,7 +12,13 @@ namespace TantosHousingProject.Controllers
 {
     public class RoomsController : Controller
     {
-        RoomService _roomService = new RoomService();
+        IRoomService _roomService;
+        
+
+        public RoomsController(IRoomService roomService)
+        {
+            _roomService = roomService;
+        }
 
         public IActionResult RoomIndex()
         {

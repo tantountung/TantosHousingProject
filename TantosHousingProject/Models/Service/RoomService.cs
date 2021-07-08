@@ -12,9 +12,9 @@ namespace TantosHousingProject.Models.Service
     {
         IRoomRepo _roomRepo;
 
-        public RoomService()
+        public RoomService(IRoomRepo roomRepo)
         {
-            _roomRepo = new RoomRepo();
+            _roomRepo = roomRepo;
         }
 
 
