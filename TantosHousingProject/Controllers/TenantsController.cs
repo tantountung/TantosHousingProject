@@ -4,84 +4,98 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TantosHousingProject.Models.Data;
+using TantosHousingProject.Models.Service;
+using TantosHousingProject.Models.ViewModel;
 
 namespace TantosHousingProject.Controllers
 {
     public class TenantsController : Controller
     {
-        // GET: TenantsController
-        public ActionResult Index()
+        private readonly ITenantService _tenantService;
+
+        public TenantsController(ITenantService tenantService)
         {
-            return View();
+            _tenantService = tenantService;
         }
 
-        // GET: TenantsController/Details/5
-        public ActionResult Details(int id)
+
+       public IActionResult TenantIndex()
         {
-            return View();
+            return View(_tenantService.All());
         }
 
-        // GET: TenantsController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: TenantsController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult TenantIndex(TenantIndexViewModel vm)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            vm.TenantList = _tenantService.FindByTenantName(vm.FilterText);
+
+            return View(vm);
         }
 
-        // GET: TenantsController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet]
+        public IActionResult CreateTenant()
         {
-            return View();
+            return View(new CreateTenantViewModel());
         }
-
-        // POST: TenantsController/Edit/5
+       
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult CreateTenant(CreateTenantViewModel createTenant)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                _tenantService.Add(createTenant);
+
+                return RedirectToAction(nameof(TenantIndex));
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(createTenant);
         }
 
-        // GET: TenantsController/Delete/5
-        public ActionResult Delete(int id)
+        public IActionResult DetailsTenant(int id)
         {
-            return View();
+            Tenant tenant = _tenantService.FindById(id);
+
+            if (tenant == null)
+            {
+                return RedirectToAction("TenantIndex");
+            }
+
+            return View(tenant);
         }
 
-        // POST: TenantsController/Delete/5
+        [HttpGet]
+        public IActionResult EditTenant(int id)
+        {
+            Tenant tenant = _tenantService.FindById(id);
+
+            if (tenant == null)
+            {
+                return RedirectToAction("TenantIndex");
+            }
+
+            EditTenantViewModel editTenant = new EditTenantViewModel();
+            editTenant.Id = id;
+            editTenant.CreateTenant = _tenantService.TenantToCreateTenant(tenant);
+
+            return View(editTenant);
+        }
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public IActionResult EditTenant(int id, CreateTenantViewModel createTenant)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                Tenant tenant = _tenantService.Edit(id, createTenant);
+
+                return RedirectToAction(nameof(TenantIndex));
             }
-            catch
-            {
-                return View();
-            }
+
+            EditTenantViewModel editTenant = new EditTenantViewModel();
+            editTenant.Id = id;
+            editTenant.CreateTenant = createTenant;
+
+            return View(editTenant);
         }
     }
 }

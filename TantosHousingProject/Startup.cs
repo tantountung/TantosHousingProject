@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using TantosHousingProject.Database;
 using TantosHousingProject.Models.Service;
 using TantosHousingProject.Models.Repo;
+using TantosHousingProject.Models.Data;
 
 namespace TantosHousingProject
 {
@@ -36,10 +37,11 @@ namespace TantosHousingProject
 
             //---------------- services IOC ----------------------------
             services.AddScoped<IRoomService, RoomService>();
-
+            services.AddScoped<ITenantService, TenantService>();
 
             //----------------- repo IOC -------------------------------
-            services.AddScoped<IGenericRepo, RoomRepo>();
+            services.AddScoped<IGenericRepo<Room>, RoomRepo>();
+            services.AddScoped<IGenericRepo<Tenant>, TenantRepo>();
 
 
             services.AddMvc();

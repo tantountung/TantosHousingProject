@@ -11,12 +11,12 @@ namespace TantosHousingProject.Models.Service
     {
         Tenant Add(CreateTenantViewModel createTenant);
 
-       List<Tenant> All();
+        TenantIndexViewModel All();
 
         Tenant FindById(int id);
 
 
-        List<Tenant> FindByTenantId(int tenantId);
+        List<Tenant> FindByTenantName(string tenantName);
 
         Tenant Edit(int id, CreateTenantViewModel tenant);
 

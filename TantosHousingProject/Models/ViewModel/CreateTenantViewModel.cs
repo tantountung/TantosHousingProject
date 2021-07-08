@@ -18,5 +18,17 @@ namespace TantosHousingProject.Models.ViewModel
 
         [Required]
         public string TenantDocument { get; set; }
+
+        public List<String> DocumentList { get; set; }
+
+        public CreateTenantViewModel()
+        {
+            DocumentList = new List<String>()
+            {
+                "Received",
+                "Requested",
+                "Not Requested"
+            };
+        }
     }
 }

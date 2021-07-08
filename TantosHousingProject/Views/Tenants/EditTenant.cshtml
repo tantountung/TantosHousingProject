@@ -1,0 +1,36 @@
+﻿@model EditTenantViewModel
+@{
+    ViewData["Title"] = "Edit Tenant";
+}
+
+<h1>Edit Tenant</h1>
+
+
+<form asp-action="EditTenant" asp-route-id="@Model.Id" method="post">
+
+    <label asp-for="CreateTenant.TenantName"></label>
+    <input asp-for="CreateTenant.TenantName" />
+    <span asp-validation-for="CreateTenant.TenantName"></span>
+
+    <label asp-for="CreateTenant.TenantPhone"></label>
+    <input asp-for="CreateTenant.TenantPhone" />
+    <span asp-validation-for="CreateTenant.TenantPhone"></span>
+
+
+    <label asp-for="CreateTenant.TenantDocument"></label>
+    <select asp-for="CreateTenant.TenantDocument">
+        <option value="" disabled>Select Document Status</option>
+        @foreach (string item in Model.CreateTenant.DocumentList)
+        {
+            <option value="@item">@item</option>
+        }
+    </select>
+    <span asp-validation-for="CreateTenant.TenantDocument"></span>
+
+
+    <input type="submit" value="Save changes" />
+
+</form>
+
+
+

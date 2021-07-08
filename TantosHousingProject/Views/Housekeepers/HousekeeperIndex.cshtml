@@ -1,0 +1,81 @@
+﻿@model HousekeeperIndexViewModel
+@{
+    ViewData["Title"] = "Housekeeper Index";
+}
+
+<a asp-action="CreateHousekeeper">Create New Housekeeper</a>
+
+<h1>Housekeeper List</h1>
+
+<form asp-action="HousekeeperIndex" method="post">
+    <label asp-for="FilterText"></label>
+    <input asp-for="FilterText" />
+    <input type="submit" value="Filter By Housekeeper Name" />
+</form>
+
+
+<div class="row">
+    <div class="col-12">
+
+        <div class="row">
+            <div class="col-3">
+                <h5>Housekeeper Name</h5>
+            </div>
+            <div class="col-2">
+                <h5>Remaining Leave</h5>
+            </div>
+            <div class="col-2">
+                <h5>Monthly Salary</h5>
+            </div>
+            <div class="col-2">
+                <h5>Has this month salary paid?</h5>
+            </div>
+            <div class="col-3">
+                <h5>Action</h5>
+            </div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-3">
+                @foreach (var item in Model.HousekeeperList)
+                {
+                    <p>@item.HousekeeperName</p>
+                }
+            </div>
+
+            <div class="col-2">
+                <p>??</p>
+            </div>
+
+
+            <div class="col-2">
+                @foreach (var item in Model.HousekeeperList)
+                {
+                    <p>@item.HousekeeperSalary</p>
+                }
+            </div>
+
+            <div class="col-2">
+                <p>??</p>
+            </div>
+
+           
+            <div class="col-3">
+
+                @foreach (var item in Model.HousekeeperList)
+                {
+                <a class="btn btn-info" asp-action="DetailsHousekeeper" asp-route-id="@item.Id">Details Housekeeper</a>
+                }
+                
+            </div>
+        </div>
+        
+
+    </div>
+</div>
+
+
+
+

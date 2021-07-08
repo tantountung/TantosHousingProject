@@ -3,45 +3,94 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TantosHousingProject.Models.Data;
+using TantosHousingProject.Models.Repo;
 using TantosHousingProject.Models.ViewModel;
 
 namespace TantosHousingProject.Models.Service
 {
     public class TenantService : ITenantService
     {
-        public Tenant Add(CreateTenantViewModel createTenant)
+        private readonly IGenericRepo<Tenant> _tenantRepo;
+
+        public TenantService(IGenericRepo<Tenant> tenantRepo)
         {
-            throw new NotImplementedException();
+            _tenantRepo = tenantRepo;
         }
 
-        public List<Tenant> All()
+        public Tenant Add(CreateTenantViewModel createTenant)
         {
-            throw new NotImplementedException();
+            Tenant Tenant = new Tenant();
+
+            Tenant.TenantName = createTenant.TenantName;
+            Tenant.TenantPhone = createTenant.TenantPhone;
+            Tenant.TenantDocument = createTenant.TenantDocument;
+
+            Tenant = _tenantRepo.Create(Tenant);
+
+            return Tenant;
+        }
+
+        public TenantIndexViewModel All()
+        {
+            TenantIndexViewModel vm = new TenantIndexViewModel();
+
+            vm.TenantList = _tenantRepo.Read();
+
+            return vm;
+        }
+
+
+        public Tenant FindById(int id)
+        {
+            return _tenantRepo.Read(id);
+        }
+
+        public List<Tenant> FindByTenantName(string tenantName)
+        {
+            List<Tenant> roomTypeList = new List<Tenant>();
+
+            foreach (Tenant item in _tenantRepo.Read())
+            {
+                if (item.TenantName.Equals(tenantName))
+                {
+                    roomTypeList.Add(item);
+                }
+            }
+
+            return roomTypeList;
         }
 
         public Tenant Edit(int id, CreateTenantViewModel tenant)
         {
-            throw new NotImplementedException();
-        }
+            Tenant oriRoom = FindById(id);
 
-        public Tenant FindById(int id)
-        {
-            throw new NotImplementedException();
-        }
+            if (oriRoom == null)
+            {
+                return null;
+            }
 
-        public List<Tenant> FindByTenantId(int tenantId)
-        {
-            throw new NotImplementedException();
-        }
+            oriRoom.TenantName = tenant.TenantName;
+            oriRoom.TenantPhone = tenant.TenantPhone;
+            oriRoom.TenantDocument = tenant.TenantDocument;
 
+            oriRoom = _tenantRepo.Update(oriRoom);
+
+            return oriRoom;
+        }
         public bool Remove(int id)
         {
-            throw new NotImplementedException();
+            return _tenantRepo.Delete(id);
         }
 
         public CreateTenantViewModel TenantToCreateTenant(Tenant tenant)
         {
-            throw new NotImplementedException();
+            CreateTenantViewModel createRoom = new CreateTenantViewModel();
+
+            createRoom.TenantName = tenant.TenantName;
+            createRoom.TenantPhone = tenant.TenantPhone;
+            createRoom.TenantDocument = tenant.TenantDocument;
+
+            return createRoom;
         }
     }
 }

@@ -1,0 +1,35 @@
+﻿@model Housekeeper
+@{
+    ViewData["Title"] = "Housekeeper Details";
+}
+
+<h1>Housekeeper Details</h1>
+
+<dl>
+    <dt>Housekeeper Name</dt>
+    <dd>@Model.HousekeeperName</dd>
+    <dt>Phone Number</dt>
+    <dd>@Model.HousekeeperPhone</dd>
+    <dt>Housekeeper Address</dt>
+    <dd>@Model.HousekeeperAddress</dd>
+    <dt>Bank Account</dt>
+    <dd>@Model.HousekeeperBankNumber</dd>
+    <dt>Annual Leave</dt>
+    <dd>@Model.HousekeeperLeave</dd>
+    <dt>Date Leave Taken</dt>
+    <dd>@Model.LeaveDate</dd>
+    <dt>Monthly Salary</dt>
+    <dd>@Model.HousekeeperSalary</dd>
+    <dt>Date Salary Paid</dt>
+    <dd>@Model.SalaryPaidDate</dd>
+    <dt>Start Date</dt>
+    <dd>@Model.HousekeeperStartDate</dd>
+    <dt>End Date</dt>
+    <dd>@Model.HousekeeperEndDate</dd>
+  
+
+
+    <a asp-action="EditHousekeeper" asp-route-id="@Model.Id">Edit Housekeeper</a>
+    <a asp-action="HousekeeperIndex">Back To List</a>
+
+</dl>

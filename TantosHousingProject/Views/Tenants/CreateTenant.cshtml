@@ -1,0 +1,32 @@
+﻿@model CreateTenantViewModel
+@{
+    ViewData["Title"] = "Create Tenant";
+}
+
+<h1>Create New Tenant</h1>
+
+
+<label asp-for="TenantName"></label>
+<input asp-for="TenantName" />
+<span asp-validation-for="TenantName"></span>
+
+
+<label asp-for="TenantPhone"></label>
+<input asp-for="TenantPhone" />
+<span asp-validation-for="TenantPhone"></span>
+
+
+<form asp-action="CreateTenant" asp-controller="Tenants" method="post">
+    <label asp-for="TenantDocument"></label>
+    <select asp-for="TenantDocument">
+        <option value="" disabled>Select Document Status</option>
+        @foreach (string item in Model.DocumentList)
+        {
+            <option value="@item">@item</option>
+        }
+    </select>
+    <span asp-validation-for="TenantDocument"></span>
+
+    <button>Create</button>
+    <button type="reset">Reset</button>
+</form>

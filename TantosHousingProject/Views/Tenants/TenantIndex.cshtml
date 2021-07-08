@@ -1,0 +1,58 @@
+﻿@model TenantIndexViewModel
+@{
+    ViewData["Title"] = "Tenant Index";
+}
+
+<a asp-action="CreateTenant">Create New Tenant</a>
+
+<h1>Tenant List</h1>
+
+<form asp-action="TenantIndex" method="post">
+    <label asp-for="FilterText"></label>
+    <input asp-for="FilterText" />
+    <input type="submit" value="Filter By Tenant Name" />
+</form>
+
+
+<div class="row">
+    <div class="col-12">
+
+        <div class="row">
+            <div class="col-3">
+                <h5>Tenant Name</h5>
+            </div>
+            <div class="col-3">
+                <h5>Tenant Phone</h5>
+            </div>
+            <div class="col-3">
+                <h5>Tenant Document</h5>
+            </div>
+            <div class="col-3">
+                <h5>Action</h5>
+            </div>
+        </div>
+
+        @foreach (var item in Model.TenantList)
+        {
+    <div class="row">
+        <div class="col-3">
+            <p>@item.TenantName</p>
+        </div>
+        <div class="col-3">
+            <p>@item.TenantPhone</p>
+        </div>
+        <div class="col-3">
+            <p>@item.TenantDocument</p>
+        </div>
+        <div class="col-3">
+            <a class="btn btn-info" asp-action="DetailsTenant" asp-route-id="@item.Id">Details Room</a>
+        </div>
+    </div>
+        }
+
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,20 @@
+﻿@model Tenant
+@{
+    ViewData["Title"] = "Tenant Details";
+}
+
+<h1>Tenant Details</h1>
+
+<dl>
+    <dt>Tenant Name</dt>
+    <dd>@Model.TenantName</dd>
+    <dt>Phone Number</dt>
+    <dd>@Model.TenantPhone</dd>
+    <dt>Document Status</dt>
+    <dd>@Model.TenantDocument</dd>
+
+
+    <a asp-action="EditTenant" asp-route-id="@Model.Id">Edit Tenant</a>
+    <a asp-action="TenantIndex">Back To List</a>
+
+</dl>
