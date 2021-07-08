@@ -7,7 +7,7 @@ using TantosHousingProject.Models.Data;
 
 namespace TantosHousingProject.Models.Repo
 {
-    public class RoomRepo : IRoomRepo
+    public class RoomRepo : IGenericRepo <Room>
     {
         private readonly THPDbContext tHPDbContext;
 

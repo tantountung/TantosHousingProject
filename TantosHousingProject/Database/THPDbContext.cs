@@ -15,5 +15,7 @@ namespace TantosHousingProject.Database
 
         public DbSet<Room> Rooms { get; set; }
 
+        public DbSet<Tenant> Tenants { get; set; }
+
     }
 }

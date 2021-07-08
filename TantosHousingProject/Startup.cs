@@ -39,7 +39,7 @@ namespace TantosHousingProject
 
 
             //----------------- repo IOC -------------------------------
-            services.AddScoped<IRoomRepo, RoomRepo>();
+            services.AddScoped<IGenericRepo, RoomRepo>();
 
 
             services.AddMvc();
