@@ -38,10 +38,14 @@ namespace TantosHousingProject
             //---------------- services IOC ----------------------------
             services.AddScoped<IRoomService, RoomService>();
             services.AddScoped<ITenantService, TenantService>();
+            services.AddScoped<IHousekeeperService, HousekeeperService>();
+            //services.AddScoped<IContractService, ContractService>();
 
             //----------------- repo IOC -------------------------------
             services.AddScoped<IGenericRepo<Room>, RoomRepo>();
             services.AddScoped<IGenericRepo<Tenant>, TenantRepo>();
+            services.AddScoped<IGenericRepo<Housekeeper>, HousekeeperRepo>();
+            services.AddScoped<IGenericRepo<Contract>, ContractRepo>();
 
 
             services.AddMvc();

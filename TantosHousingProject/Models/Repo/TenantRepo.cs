@@ -9,17 +9,17 @@ namespace TantosHousingProject.Models.Repo
 {
     public class TenantRepo : IGenericRepo<Tenant>
     {
-        private readonly THPDbContext tHPDbContext;
+        private readonly THPDbContext _tHPDbContext;
 
         public TenantRepo(THPDbContext tHPDbContext)
         {
-            this.tHPDbContext = tHPDbContext;
+            _tHPDbContext = tHPDbContext;
         }
         public Tenant Create(Tenant tenant)
         {
-            tHPDbContext.Tenants.Add(tenant);
+            _tHPDbContext.Tenants.Add(tenant);
 
-            int result = tHPDbContext.SaveChanges();
+            int result = _tHPDbContext.SaveChanges();
 
             if (result == 0)
             {
@@ -32,12 +32,12 @@ namespace TantosHousingProject.Models.Repo
         
         public Tenant Read(int id)
         {
-            return tHPDbContext.Tenants.SingleOrDefault(row => row.Id == id);
+            return _tHPDbContext.Tenants.SingleOrDefault(row => row.Id == id);
         }
 
         public List<Tenant> Read()
         {
-            return tHPDbContext.Tenants.ToList();
+            return _tHPDbContext.Tenants.ToList();
         }
 
         public Tenant Update(Tenant modelName)

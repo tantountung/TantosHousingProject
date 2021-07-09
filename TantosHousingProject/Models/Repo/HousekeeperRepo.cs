@@ -9,17 +9,17 @@ namespace TantosHousingProject.Models.Repo
 {
     public class HousekeeperRepo : IGenericRepo<Housekeeper>
     {
-        private readonly THPDbContext tHPDbContext;
+        private readonly THPDbContext _tHPDbContext;
 
         public HousekeeperRepo(THPDbContext tHPDbContext)
         {
-            this.tHPDbContext = tHPDbContext;
+            _tHPDbContext = tHPDbContext;
         }
         public Housekeeper Create(Housekeeper housekeeper)
         {
-            tHPDbContext.Housekeepers.Add(housekeeper);
+            _tHPDbContext.Housekeepers.Add(housekeeper);
 
-            int result = tHPDbContext.SaveChanges();
+            int result = _tHPDbContext.SaveChanges();
 
             if (result == 0)
             {
@@ -32,12 +32,12 @@ namespace TantosHousingProject.Models.Repo
         
         public Housekeeper Read(int id)
         {
-            return tHPDbContext.Housekeepers.SingleOrDefault(row => row.Id == id);
+            return _tHPDbContext.Housekeepers.SingleOrDefault(row => row.Id == id);
         }
 
         public List<Housekeeper> Read()
         {
-            return tHPDbContext.Housekeepers.ToList();
+            return _tHPDbContext.Housekeepers.ToList();
         }
 
         public Housekeeper Update(Housekeeper modelName)

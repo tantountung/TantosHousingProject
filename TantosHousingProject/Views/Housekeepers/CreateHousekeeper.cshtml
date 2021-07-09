@@ -5,58 +5,58 @@
 
 <h1>Create New Housekeeper</h1>
 
-<form>
+<form asp-action="CreateHousekeeper" asp-controller="Housekeepers" method="post">
 
-<label asp-for="HousekeeperName"></label>
-<input asp-for="HousekeeperName" />
-<span asp-validation-for="HousekeeperName"></span>
-
-
-<label asp-for="HousekeeperPhone"></label>
-<input asp-for="HousekeeperPhone" />
-<span asp-validation-for="HousekeeperPhone"></span>
+    <label asp-for="HousekeeperName"></label>
+    <input asp-for="HousekeeperName" />
+    <span asp-validation-for="HousekeeperName"></span>
 
 
-<label asp-for="HousekeeperAddress"></label>
-<input asp-for="HousekeeperAddress" />
-<span asp-validation-for="HousekeeperAddress"></span>
+    <label asp-for="HousekeeperPhone"></label>
+    <input asp-for="HousekeeperPhone" />
+    <span asp-validation-for="HousekeeperPhone"></span>
 
 
-<label asp-for="HousekeeperBankNumber"></label>
-<input asp-for="HousekeeperBankNumber" />
-<span asp-validation-for="HousekeeperBankNumber"></span>
+    <label asp-for="HousekeeperAddress"></label>
+    <input asp-for="HousekeeperAddress" />
+    <span asp-validation-for="HousekeeperAddress"></span>
 
 
-<label asp-for="HousekeeperLeave"></label>
-<input asp-for="HousekeeperLeave" />
-<span asp-validation-for="HousekeeperLeave"></span>
-
-<label asp-for="LeaveDate"></label>
-<input asp-for="LeaveDate" />
-<span asp-validation-for="LeaveDate"></span>
+    <label asp-for="HousekeeperBankNumber"></label>
+    <input asp-for="HousekeeperBankNumber" />
+    <span asp-validation-for="HousekeeperBankNumber"></span>
 
 
-<label asp-for="HousekeeperSalary"></label>
-<input asp-for="HousekeeperSalary" />
-<span asp-validation-for="HousekeeperSalary"></span>
+    <label asp-for="HousekeeperLeave"></label>
+    <input asp-for="HousekeeperLeave" />
+    <span asp-validation-for="HousekeeperLeave"></span>
+
+    @*<label asp-for="LeaveDate"></label>
+        <input asp-for="LeaveDate" />
+        <span asp-validation-for="LeaveDate"></span>*@
 
 
-<label asp-for="SalaryPaidDate"></label>
-<input asp-for="SalaryPaidDate" />
-<span asp-validation-for="SalaryPaidDate"></span>
+    <label asp-for="HousekeeperSalary"></label>
+    <input asp-for="HousekeeperSalary" />
+    <span asp-validation-for="HousekeeperSalary"></span>
 
 
-<label asp-for="HousekeeperStartDate"></label>
-<input asp-for="HousekeeperStartDate" />
-<span asp-validation-for="HousekeeperStartDate"></span>
+    @*<label asp-for="SalaryPaidDate"></label>
+        <input asp-for="SalaryPaidDate" />
+        <span asp-validation-for="SalaryPaidDate"></span>*@
 
 
-<label asp-for="HousekeeperEndDate"></label>
-<input asp-for="HousekeeperEndDate" />
-<span asp-validation-for="HousekeeperEndDate"></span>
+    <label asp-for="HousekeeperStartDate"></label>
+    <input asp-for="HousekeeperStartDate" />
+    <span asp-validation-for="HousekeeperStartDate"></span>
+
+
+    <label asp-for="HousekeeperEndDate"></label>
+    <input asp-for="HousekeeperEndDate" />
+    <span asp-validation-for="HousekeeperEndDate"></span>
 
 
 
-<button>Create</button>
-<button type="reset">Reset</button>
+    <button>Create</button>
+    <button type="reset">Reset</button>
 </form>

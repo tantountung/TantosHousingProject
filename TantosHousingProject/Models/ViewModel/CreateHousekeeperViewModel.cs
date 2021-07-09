@@ -29,18 +29,23 @@ namespace TantosHousingProject.Models.ViewModel
         public int HousekeeperLeave { get; set; }
 
 
-        public DateTime LeaveDate { get; set; }
+        //public DateTime LeaveDate { get; set; }
 
         [Required]
         [DataType(DataType.Currency)]
         public int HousekeeperSalary { get; set; }
 
-        public DateTime SalaryPaidDate { get; set; }
+        //public DateTime SalaryPaidDate { get; set; }
 
         [Required]
         public DateTime HousekeeperStartDate { get; set; }
 
         public DateTime HousekeeperEndDate { get; set; }
+
+        public CreateHousekeeperViewModel()
+        {
+
+        }
 
     }
 }

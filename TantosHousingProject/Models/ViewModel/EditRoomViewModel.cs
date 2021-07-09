@@ -10,5 +10,10 @@ namespace TantosHousingProject.Models.ViewModel
         public int Id { get; set; }
 
         public CreateRoomViewModel CreateRoom { get; set; }
+
+        public EditRoomViewModel()
+        {
+            CreateRoom = new CreateRoomViewModel();
+        }
     }
 }

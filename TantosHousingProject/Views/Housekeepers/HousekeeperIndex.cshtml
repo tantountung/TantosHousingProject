@@ -14,6 +14,7 @@
 </form>
 
 
+
 <div class="row">
     <div class="col-12">
 
@@ -21,57 +22,34 @@
             <div class="col-3">
                 <h5>Housekeeper Name</h5>
             </div>
-            <div class="col-2">
-                <h5>Remaining Leave</h5>
-            </div>
-            <div class="col-2">
+            <div class="col-3">
                 <h5>Monthly Salary</h5>
             </div>
-            <div class="col-2">
-                <h5>Has this month salary paid?</h5>
+            <div class="col-3">
+                <h5>Start Date</h5>
             </div>
             <div class="col-3">
                 <h5>Action</h5>
             </div>
         </div>
 
-
-        <div class="row">
-
-            <div class="col-3">
-                @foreach (var item in Model.HousekeeperList)
-                {
-                    <p>@item.HousekeeperName</p>
-                }
-            </div>
-
-            <div class="col-2">
-                <p>??</p>
-            </div>
-
-
-            <div class="col-2">
-                @foreach (var item in Model.HousekeeperList)
-                {
-                    <p>@item.HousekeeperSalary</p>
-                }
-            </div>
-
-            <div class="col-2">
-                <p>??</p>
-            </div>
-
-           
-            <div class="col-3">
-
-                @foreach (var item in Model.HousekeeperList)
-                {
-                <a class="btn btn-info" asp-action="DetailsHousekeeper" asp-route-id="@item.Id">Details Housekeeper</a>
-                }
-                
-            </div>
+        @foreach (var item in Model.HousekeeperList)
+        {
+    <div class="row">
+        <div class="col-3">
+            <p>@item.HousekeeperName</p>
         </div>
-        
+        <div class="col-3">
+            <p>@item.HousekeeperSalary</p>
+        </div>
+        <div class="col-3">
+            <p>@item.HousekeeperStartDate</p>
+        </div>
+        <div class="col-3">
+            <a class="btn btn-info" asp-action="DetailsHousekeeper" asp-route-id="@item.Id">Details Housekeeper</a>
+        </div>
+    </div>
+        }
 
     </div>
 </div>

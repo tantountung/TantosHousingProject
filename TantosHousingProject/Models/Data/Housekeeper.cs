@@ -29,7 +29,7 @@ namespace TantosHousingProject.Models.Data
         public int HousekeeperLeave { get; set; }
 
 
-        public DateTime LeaveDate { get; set; }
+        //public DateTime LeaveDate { get; set; }
 
         //[Required]
         //public int HousekeeperRemainingLeave { get; set; }
@@ -38,7 +38,7 @@ namespace TantosHousingProject.Models.Data
         [DataType(DataType.Currency)]
         public int HousekeeperSalary { get; set; }
 
-        public DateTime SalaryPaidDate { get; set; }
+        //public DateTime SalaryPaidDate { get; set; } (idea: term money transfer)
 
         [Required]
         public DateTime HousekeeperStartDate { get; set; }

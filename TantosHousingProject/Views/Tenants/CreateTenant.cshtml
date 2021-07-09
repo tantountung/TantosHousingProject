@@ -6,6 +6,9 @@
 <h1>Create New Tenant</h1>
 
 
+
+<form asp-action="CreateTenant" asp-controller="Tenants" method="post">
+
 <label asp-for="TenantName"></label>
 <input asp-for="TenantName" />
 <span asp-validation-for="TenantName"></span>
@@ -15,8 +18,6 @@
 <input asp-for="TenantPhone" />
 <span asp-validation-for="TenantPhone"></span>
 
-
-<form asp-action="CreateTenant" asp-controller="Tenants" method="post">
     <label asp-for="TenantDocument"></label>
     <select asp-for="TenantDocument">
         <option value="" disabled>Select Document Status</option>

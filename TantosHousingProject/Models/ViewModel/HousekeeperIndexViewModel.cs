@@ -12,5 +12,10 @@ namespace TantosHousingProject.Models.ViewModel
         public string FilterText { get; set; }
 
         public List<Housekeeper> HousekeeperList { get; set; }
+
+        public HousekeeperIndexViewModel()
+        {
+            HousekeeperList = new List<Housekeeper>();
+        }
     }
 }

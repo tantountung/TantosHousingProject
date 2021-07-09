@@ -26,9 +26,9 @@ namespace TantosHousingProject.Models.Service
             Housekeeper.HousekeeperAddress = createHousekeeper.HousekeeperAddress;
             Housekeeper.HousekeeperBankNumber = createHousekeeper.HousekeeperBankNumber;
             Housekeeper.HousekeeperLeave = createHousekeeper.HousekeeperLeave;
-            Housekeeper.LeaveDate = createHousekeeper.LeaveDate;
+            //Housekeeper.LeaveDate = createHousekeeper.LeaveDate;
             Housekeeper.HousekeeperSalary = createHousekeeper.HousekeeperSalary;
-            Housekeeper.SalaryPaidDate = createHousekeeper.SalaryPaidDate;
+            //Housekeeper.SalaryPaidDate = createHousekeeper.SalaryPaidDate;
             Housekeeper.HousekeeperStartDate = createHousekeeper.HousekeeperStartDate;
             Housekeeper.HousekeeperEndDate = createHousekeeper.HousekeeperEndDate;
 
@@ -72,7 +72,7 @@ namespace TantosHousingProject.Models.Service
         {
             Housekeeper Housekeeper = FindById(id);
 
-            if (createHousekeeper == null)
+            if (Housekeeper == null)
             {
                 return null;
             }
@@ -82,15 +82,15 @@ namespace TantosHousingProject.Models.Service
             Housekeeper.HousekeeperAddress = createHousekeeper.HousekeeperAddress;
             Housekeeper.HousekeeperBankNumber = createHousekeeper.HousekeeperBankNumber;
             Housekeeper.HousekeeperLeave = createHousekeeper.HousekeeperLeave;
-            Housekeeper.LeaveDate = createHousekeeper.LeaveDate;
+            //Housekeeper.LeaveDate = createHousekeeper.LeaveDate;
             Housekeeper.HousekeeperSalary = createHousekeeper.HousekeeperSalary;
-            Housekeeper.SalaryPaidDate = createHousekeeper.SalaryPaidDate;
+            //Housekeeper.SalaryPaidDate = createHousekeeper.SalaryPaidDate;
             Housekeeper.HousekeeperStartDate = createHousekeeper.HousekeeperStartDate;
             Housekeeper.HousekeeperEndDate = createHousekeeper.HousekeeperEndDate;
 
-            createHousekeeper = _housekeeperRepo.Update(createHousekeeper);
+            Housekeeper = _housekeeperRepo.Update(Housekeeper);
 
-            return createHousekeeper;
+            return Housekeeper;
         }
         public bool Remove(int id)
         {
@@ -106,13 +106,14 @@ namespace TantosHousingProject.Models.Service
             Housekeeper.HousekeeperAddress = createHousekeeper.HousekeeperAddress;
             Housekeeper.HousekeeperBankNumber = createHousekeeper.HousekeeperBankNumber;
             Housekeeper.HousekeeperLeave = createHousekeeper.HousekeeperLeave;
-            Housekeeper.LeaveDate = createHousekeeper.LeaveDate;
+            //Housekeeper.LeaveDate = createHousekeeper.LeaveDate;
             Housekeeper.HousekeeperSalary = createHousekeeper.HousekeeperSalary;
-            Housekeeper.SalaryPaidDate = createHousekeeper.SalaryPaidDate;
+            //Housekeeper.SalaryPaidDate = createHousekeeper.SalaryPaidDate;
             Housekeeper.HousekeeperStartDate = createHousekeeper.HousekeeperStartDate;
             Housekeeper.HousekeeperEndDate = createHousekeeper.HousekeeperEndDate;
 
-            return createHousekeeper;
+            return Housekeeper;
+
         }
     }
 }

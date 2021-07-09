@@ -12,5 +12,10 @@ namespace TantosHousingProject.Models.ViewModel
         public string FilterText { get; set; }
 
         public List<Tenant> TenantList { get; set; }
+
+        public TenantIndexViewModel()
+        {
+            TenantList = new List<Tenant>();
+        }
     }
 }
