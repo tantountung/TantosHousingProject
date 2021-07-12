@@ -21,5 +21,6 @@ namespace TantosHousingProject.Database
 
         public DbSet<Contract> Contracts { get; set; }
 
+
     }
 }

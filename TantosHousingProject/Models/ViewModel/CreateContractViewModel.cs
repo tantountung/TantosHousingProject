@@ -3,40 +3,34 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using TantosHousingProject.Models.Data;
 
-namespace TantosHousingProject.Models.Data
+namespace TantosHousingProject.Models.ViewModel
 {
-    public class Contract
+    public class CreateContractViewModel
     {
-        [Key]
-        public int Id { get; set; }
         [Required]
         public int RoomPrice { get; set; }
 
-        //[Required]
-        //public string RoomOccupancy { get; set; }
-
-        //public DateTime RoomCycle { get; set; }
-
-
-        //public string RoomPayment { get; set; } //checkbox if fully paid
         [Required]
         public DateTime PaymentDate { get; set; }
 
-        //[DataType(DataType.Currency)]
-        //public int PaymentAmount { get; set; }
 
         [Required]
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
 
-        //public DateTime ReminderSent { get; set; }
         [Required]
         public Room RoomInQuestion { get; set; }
 
 
         [Required]
         public Tenant TenantInQuestion { get; set; }
+
+        public List<Room> RoomList { get; set; }
+
+        public List<Tenant> TenantList { get; set; }
     }
 }
+

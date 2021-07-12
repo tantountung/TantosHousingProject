@@ -39,7 +39,7 @@ namespace TantosHousingProject
             services.AddScoped<IRoomService, RoomService>();
             services.AddScoped<ITenantService, TenantService>();
             services.AddScoped<IHousekeeperService, HousekeeperService>();
-            //services.AddScoped<IContractService, ContractService>();
+            services.AddScoped<IContractService, ContractService>();
 
             //----------------- repo IOC -------------------------------
             services.AddScoped<IGenericRepo<Room>, RoomRepo>();
