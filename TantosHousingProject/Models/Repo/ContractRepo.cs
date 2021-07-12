@@ -52,17 +52,45 @@ namespace TantosHousingProject.Models.Repo
                 return null;
             }
 
-            //newContract.ContractNumber = contract.ContractNumber;
-            //newContract.ContractType = contract.ContractType;
-           
+            tHPDbContext.Update(contract);
+
+            //newContract.RoomInQuestion = contract.RoomInQuestion;
+            //newContract.TenantInQuestion = contract.TenantInQuestion;
+            //newContract.RoomPrice = contract.RoomPrice;
+            //newContract.PaymentDate = contract.PaymentDate;
+            //newContract.StartDate = contract.StartDate;
+            //newContract.EndDate = contract.EndDate;
+
+            int result = tHPDbContext.SaveChanges();
+
+            if (result == 0)
+            {
+                return null;
+            }
+
             return newContract;
         }
         
         
         public bool Delete(int id)
         {
-         
-            throw new NotImplementedException();
+            Contract newContract = Read(id);
+
+            if (newContract == null)
+            {
+                return false;
+            }
+
+            tHPDbContext.Contracts.Remove(newContract);
+
+            int result = tHPDbContext.SaveChanges();
+
+            if (result == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

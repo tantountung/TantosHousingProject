@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TantosHousingProject.Models.Service;
+using TantosHousingProject.Models.ViewModel;
 
 namespace TantosHousingProject.Controllers
 {
@@ -24,14 +25,8 @@ namespace TantosHousingProject.Controllers
             return View(_contractService.All());
         }
 
-        // GET: ContractsController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: ContractsController/Create
-        public ActionResult Create()
+        public ActionResult CreateContract()
         {
             return View();
         }
@@ -39,17 +34,25 @@ namespace TantosHousingProject.Controllers
         // POST: ContractsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult CreateContract(CreateContractViewModel createContract)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                _contractService.Add(createContract);
+                return RedirectToAction(nameof(ContractIndex));
             }
-            catch
+            else
             {
-                return View();
+                return View(createContract);
             }
         }
+
+        // GET: ContractsController/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
 
         // GET: ContractsController/Edit/5
         public ActionResult Edit(int id)
