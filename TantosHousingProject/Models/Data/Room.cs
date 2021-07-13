@@ -23,6 +23,11 @@ namespace TantosHousingProject.Models.Data
 
         public List<Contract> RoomHistory { get; set; }
 
+        public Room()
+        {
+            RoomHistory = new List<Contract>();
+        }
+
 
 
 

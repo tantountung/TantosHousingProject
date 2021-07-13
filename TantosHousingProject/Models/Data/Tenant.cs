@@ -23,5 +23,10 @@ namespace TantosHousingProject.Models.Data
         public string TenantDocument { get; set; }
 
         public List<Contract> TenantHistory { get; set; }
+
+        public Tenant()
+        {
+            TenantHistory = new List<Contract>();
+        }
     }
 }
