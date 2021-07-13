@@ -22,15 +22,20 @@ namespace TantosHousingProject.Models.ViewModel
         public DateTime EndDate { get; set; }
 
         [Required]
-        public Room RoomInQuestion { get; set; }
+        public int RoomInQuestionId { get; set; }
 
 
         [Required]
-        public Tenant TenantInQuestion { get; set; }
+        public int TenantInQuestionId { get; set; }
 
         public List<Room> RoomList { get; set; }
 
         public List<Tenant> TenantList { get; set; }
+
+        public CreateContractViewModel()
+        {
+
+        }
     }
 }
 

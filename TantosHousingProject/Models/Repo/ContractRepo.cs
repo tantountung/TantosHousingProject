@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -39,7 +40,7 @@ namespace TantosHousingProject.Models.Repo
         public List<Contract> Read()
         {
 
-            return tHPDbContext.Contracts.ToList();
+            return tHPDbContext.Contracts.Include(row => row.RoomInQuestion).Include( row => row.TenantInQuestion).ToList();
 
         }
 

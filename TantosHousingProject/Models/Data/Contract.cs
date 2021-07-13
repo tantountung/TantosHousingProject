@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -32,11 +33,19 @@ namespace TantosHousingProject.Models.Data
         public DateTime EndDate { get; set; }
 
         //public DateTime ReminderSent { get; set; }
+
+        [ForeignKey("RoomInQuestion")]
+        public int RoomInQuestionId { get; set; }
+
         [Required]
         public Room RoomInQuestion { get; set; }
 
+        [ForeignKey("TenantInQuestion")]
+        public int TenantInQuestionId { get; set; }
 
         [Required]
         public Tenant TenantInQuestion { get; set; }
+
+
     }
 }

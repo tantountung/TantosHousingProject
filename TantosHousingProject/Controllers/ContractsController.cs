@@ -12,10 +12,14 @@ namespace TantosHousingProject.Controllers
     public class ContractsController : Controller
     {
         private readonly IContractService _contractService;
+        private readonly IRoomService roomService;
+        private readonly ITenantService tenantService;
 
-        public ContractsController(IContractService contractService)
+        public ContractsController(IContractService contractService, IRoomService roomService, ITenantService tenantService)
         {
             _contractService = contractService;
+            this.roomService = roomService;
+            this.tenantService = tenantService;
         }
 
 
@@ -28,7 +32,11 @@ namespace TantosHousingProject.Controllers
         // GET: ContractsController/Create
         public ActionResult CreateContract()
         {
-            return View();
+            CreateContractViewModel createContract = new CreateContractViewModel();
+            createContract.RoomList = roomService.All().RoomList;
+            createContract.TenantList = tenantService.All().TenantList;
+
+            return View(createContract);
         }
 
         // POST: ContractsController/Create

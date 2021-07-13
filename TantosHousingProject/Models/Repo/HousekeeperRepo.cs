@@ -29,7 +29,7 @@ namespace TantosHousingProject.Models.Repo
             return housekeeper;
         }
 
-        
+
         public Housekeeper Read(int id)
         {
             return _tHPDbContext.Housekeepers.SingleOrDefault(row => row.Id == id);
@@ -42,12 +42,44 @@ namespace TantosHousingProject.Models.Repo
 
         public Housekeeper Update(Housekeeper modelName)
         {
-            throw new NotImplementedException();
+            Housekeeper newContract = Read(modelName.Id);
+
+            if (newContract == null)
+            {
+                return null;
+            }
+
+            _tHPDbContext.Update(modelName);
+
+            int result = _tHPDbContext.SaveChanges();
+
+            if (result == 0)
+            {
+                return null;
+            }
+
+            return newContract;
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            Housekeeper newContract = Read(id);
+
+            if (newContract == null)
+            {
+                return false;
+            }
+
+            _tHPDbContext.Housekeepers.Remove(newContract);
+
+            int result = _tHPDbContext.SaveChanges();
+
+            if (result == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

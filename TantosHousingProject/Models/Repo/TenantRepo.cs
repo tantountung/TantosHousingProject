@@ -42,12 +42,44 @@ namespace TantosHousingProject.Models.Repo
 
         public Tenant Update(Tenant modelName)
         {
-            throw new NotImplementedException();
+            Tenant newContract = Read(modelName.Id);
+
+            if (newContract == null)
+            {
+                return null;
+            }
+
+            _tHPDbContext.Update(modelName);           
+
+            int result = _tHPDbContext.SaveChanges();
+
+            if (result == 0)
+            {
+                return null;
+            }
+
+            return newContract;
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            Tenant newContract = Read(id);
+
+            if (newContract == null)
+            {
+                return false;
+            }
+
+            _tHPDbContext.Tenants.Remove(newContract);
+
+            int result = _tHPDbContext.SaveChanges();
+
+            if (result == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

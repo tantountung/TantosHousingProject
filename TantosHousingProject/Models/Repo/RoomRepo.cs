@@ -63,19 +63,25 @@ namespace TantosHousingProject.Models.Repo
 
         }
 
-        public Room Update(Room room)
+        public Room Update(Room modelName)
         {
-            Room newRoom = Read(room.Id);
+            Room newContract = Read(modelName.Id);
 
-            if (newRoom == null)
+            if (newContract == null)
             {
                 return null;
             }
 
-            newRoom.RoomNumber = room.RoomNumber;
-            newRoom.RoomType = room.RoomType;
-           
-            return newRoom;
+            tHPDbContext.Update(modelName);
+
+            int result = tHPDbContext.SaveChanges();
+
+            if (result == 0)
+            {
+                return null;
+            }
+
+            return newContract;
         }
         
         
@@ -90,7 +96,23 @@ namespace TantosHousingProject.Models.Repo
 
             //return roomList.Remove(room);
 
-            throw new NotImplementedException();
+            Room newContract = Read(id);
+
+            if (newContract == null)
+            {
+                return false;
+            }
+
+            tHPDbContext.Rooms.Remove(newContract);
+
+            int result = tHPDbContext.SaveChanges();
+
+            if (result == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
