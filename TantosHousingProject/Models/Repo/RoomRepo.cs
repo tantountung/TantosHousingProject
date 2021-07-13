@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TantosHousingProject.Database;
 using TantosHousingProject.Models.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace TantosHousingProject.Models.Repo
 {
@@ -51,7 +52,7 @@ namespace TantosHousingProject.Models.Repo
 
             //return null;
 
-            return tHPDbContext.Rooms.SingleOrDefault(row => row.Id == id);
+            return tHPDbContext.Rooms.Include(room => room.RoomHistory ).SingleOrDefault(row => row.Id == id);
 
         }
 

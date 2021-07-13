@@ -21,5 +21,7 @@ namespace TantosHousingProject.Models.Data
 
         [Required]
         public string TenantDocument { get; set; }
+
+        public List<Contract> TenantHistory { get; set; }
     }
 }

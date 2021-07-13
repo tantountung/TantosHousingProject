@@ -37,12 +37,14 @@ namespace TantosHousingProject.Models.Data
         [ForeignKey("RoomInQuestion")]
         public int RoomInQuestionId { get; set; }
 
+        //One
         [Required]
         public Room RoomInQuestion { get; set; }
 
         [ForeignKey("TenantInQuestion")]
         public int TenantInQuestionId { get; set; }
 
+        //One
         [Required]
         public Tenant TenantInQuestion { get; set; }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TantosHousingProject.Database;
 using TantosHousingProject.Models.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace TantosHousingProject.Models.Repo
 {
@@ -32,7 +33,7 @@ namespace TantosHousingProject.Models.Repo
         
         public Tenant Read(int id)
         {
-            return _tHPDbContext.Tenants.SingleOrDefault(row => row.Id == id);
+            return _tHPDbContext.Tenants.Include(tenant => tenant.TenantHistory).SingleOrDefault(row => row.Id == id);
         }
 
         public List<Tenant> Read()

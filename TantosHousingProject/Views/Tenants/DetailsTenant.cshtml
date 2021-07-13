@@ -12,9 +12,35 @@
     <dd>@Model.TenantPhone</dd>
     <dt>Document Status</dt>
     <dd>@Model.TenantDocument</dd>
-
-
-    <a asp-action="EditTenant" asp-route-id="@Model.Id">Edit Tenant</a>
-    <a asp-action="TenantIndex">Back To List</a>
-
+    <dt>Actions</dt>
+    <dd>
+        <a asp-action="EditTenant" asp-route-id="@Model.Id">Edit Tenant</a> |
+        <a asp-action="TenantIndex">Back To List</a>
+    </dd>   
 </dl>
+
+<table>
+    <thead>
+        <tr>
+            <th>Room Number</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Payment Date</th>
+            <th>Price agreed</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.TenantHistory)
+        {
+            <tr>
+                <td>@item.RoomInQuestion</td>
+                <td>@item.StartDate</td>
+                <td>@item.EndDate</td>
+                <td>@item.PaymentDate</td>
+                <td>@item.RoomPrice</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

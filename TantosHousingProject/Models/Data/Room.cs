@@ -19,8 +19,12 @@ namespace TantosHousingProject.Models.Data
         [MaxLength(20)]
         public string RoomType { get; set; }
 
-      
-       
+        //Many
+
+        public List<Contract> RoomHistory { get; set; }
+
+
+
 
 
     }

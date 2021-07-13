@@ -34,7 +34,8 @@ namespace TantosHousingProject.Models.ViewModel
 
         public CreateContractViewModel()
         {
-
+            RoomList = new List<Room>();
+            TenantList = new List<Tenant>();
         }
     }
 }

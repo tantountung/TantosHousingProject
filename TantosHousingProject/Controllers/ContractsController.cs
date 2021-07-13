@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TantosHousingProject.Models.Data;
 using TantosHousingProject.Models.Service;
 using TantosHousingProject.Models.ViewModel;
 
@@ -58,7 +59,14 @@ namespace TantosHousingProject.Controllers
         // GET: ContractsController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Contract contract = _contractService.FindById(id);
+
+            if (contract == null)
+            {
+                return RedirectToAction(nameof(ContractIndex));
+            }
+
+            return View(contract);
         }
 
 

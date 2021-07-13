@@ -10,9 +10,35 @@
     <dd>@Model.RoomNumber</dd>
     <dt>Room Type</dt>
     <dd>@Model.RoomType</dd>
-   
-
-<a asp-action="EditRoom" asp-route-id="@Model.Id">Edit Room</a>
-<a asp-action="RoomIndex">Back To List</a>
-
+    <dt>Action</dt>
+    <dd>
+        <a asp-action="EditRoom" asp-route-id="@Model.Id">Edit Room</a> |
+        <a asp-action="RoomIndex">Back To List</a>
+    </dd>  
 </dl>
+
+<table>
+    <thead>
+        <tr>
+            <th>Tenant Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Payment Date</th>
+            <th>Price agreed</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.RoomHistory)
+        {
+        <tr>
+            <td>@item.TenantInQuestion</td>
+            <td>@item.StartDate</td>
+            <td>@item.EndDate</td>
+            <td>@item.PaymentDate</td>
+            <td>@item.RoomPrice</td>        
+        </tr>
+        }
+        
+    </tbody>
+    
+</table>
