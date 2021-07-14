@@ -15,6 +15,12 @@ namespace TantosHousingProject.Database
             options) : base(options)
         { }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            //Recommend on the first line inside method.           
+        }
+
         public DbSet<Room> Rooms { get; set; }
 
         public DbSet<Tenant> Tenants { get; set; }

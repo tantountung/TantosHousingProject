@@ -18,14 +18,14 @@ using TantosHousingProject.Models.Data;
 namespace TantosHousingProject
 {
     public class Startup
-    {  
+    {
         public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-     
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -34,6 +34,11 @@ namespace TantosHousingProject
             services.AddDbContext<THPDbContext>(options => options.
             UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+
+            //----------------- Identity -------------------------------
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                    .AddEntityFrameworkStores<THPDbContext>()
+                    .AddDefaultTokenProviders();
 
             //---------------- services IOC ----------------------------
             services.AddScoped<IRoomService, RoomService>();
@@ -60,7 +65,7 @@ namespace TantosHousingProject
             }
             else
             {
-        
+
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -69,7 +74,11 @@ namespace TantosHousingProject
 
             app.UseRouting();
 
-            app.UseAuthorization();
+
+            app.UseAuthentication();//  Add this
+            app.UseAuthorization();//  Add this too
+        
+        
 
             app.UseEndpoints(endpoints =>
             {
