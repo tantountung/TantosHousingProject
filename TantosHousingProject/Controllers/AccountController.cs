@@ -10,6 +10,7 @@ using TantosHousingProject.Models.ViewModel;
 
 namespace TantosHousingProject.Controllers
 {
+    //[Authorize]
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
