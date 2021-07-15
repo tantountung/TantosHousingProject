@@ -16,7 +16,7 @@ namespace TantosHousingProject.Models.ViewModel
         
         [Required]
         [DataType(DataType.Password)]
-        [StringLength(50, MinimumLength = 3)]
+        [StringLength(60, MinimumLength = 6)]
         public string Password { get; set; }
 
         [Required]

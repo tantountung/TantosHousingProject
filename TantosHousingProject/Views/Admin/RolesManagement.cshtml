@@ -47,7 +47,7 @@
                     @foreach (var item in Model.IdentityRoles)
                     {
                     <tr>
-                        <td>@item</td>
+                        <td>@item.Name</td>
                         <td>
                             @Html.ActionLink("Add", "AddRoleToUser", "Admin", new { userId = Model.UserId, roleName = item.Name });
                         </td>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using TantosHousingProject.Models.ViewModel;
 
 namespace TantosHousingProject.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -56,7 +58,7 @@ namespace TantosHousingProject.Controllers
 
             RolesManagementViewModel viewModel = new RolesManagementViewModel(id, userRoles, identityRoles);
 
-            return View(userFound);
+            return View(viewModel);
         }
 
         public async Task<IActionResult> AddRoleToUser(string userId, string roleName)
@@ -145,6 +147,18 @@ namespace TantosHousingProject.Controllers
             ViewBag.ErrorMsg = "Role was not created";
 
             return View("CreateRole", roleName);
+        }
+
+        public async Task<IActionResult> RemoveRole(string roleName)
+        {
+            if (!String.IsNullOrWhiteSpace(roleName) 
+                && await _roleManager.RoleExistsAsync(roleName))
+            {
+                IdentityRole role = await _roleManager.FindByNameAsync(roleName);
+                var result = await _roleManager.DeleteAsync(role);
+            }
+
+            return RedirectToAction(nameof(RoleList));
         }
 
     }

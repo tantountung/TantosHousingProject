@@ -40,6 +40,11 @@ namespace TantosHousingProject
                     .AddEntityFrameworkStores<THPDbContext>()
                     .AddDefaultTokenProviders();
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.AccessDeniedPath = "/Account/AccessDenied";
+            });
+
             //---------------- services IOC ----------------------------
             services.AddScoped<IRoomService, RoomService>();
             services.AddScoped<ITenantService, TenantService>();

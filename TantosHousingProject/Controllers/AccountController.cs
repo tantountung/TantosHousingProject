@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ using TantosHousingProject.Models.ViewModel;
 
 namespace TantosHousingProject.Controllers
 {
-    //[Authorize]
+  
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -24,6 +23,12 @@ namespace TantosHousingProject.Controllers
 
         [HttpGet]
         public IActionResult Register()
+        {
+            return View();
+        }
+
+  
+        public IActionResult AccessDenied()
         {
             return View();
         }
