@@ -52,7 +52,9 @@ namespace TantosHousingProject.Models.Repo
 
             //return null;
 
-            return tHPDbContext.Rooms.Include(room => room.RoomHistory ).SingleOrDefault(row => row.Id == id);
+            return tHPDbContext.Rooms.Include(room => room.RoomHistory )
+                .ThenInclude(contract => contract.TenantInQuestion)
+                .SingleOrDefault(row => row.Id == id);
 
         }
 
