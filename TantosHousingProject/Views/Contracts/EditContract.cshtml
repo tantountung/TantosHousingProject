@@ -1,0 +1,52 @@
+﻿@model EditContractViewModel
+
+@{
+    ViewData["Title"] = "Edit Contract";
+}
+
+<h1>Edit Contract</h1>
+
+
+<form asp-action="EditContract" asp-route-id="@Model.Id" method="post">
+
+    <label asp-for="CreateContract.RoomInQuestionId"></label>
+    <select asp-for="CreateContract.RoomInQuestionId">
+        <option value="" disabled>Select Room Number</option>
+        @foreach (var item in Model.CreateContract.RoomList)
+        {
+            <option value="@item.Id">@item.RoomNumber</option>
+        }
+    </select>
+    <span asp-validation-for="CreateContract.RoomInQuestionId"></span>
+
+    <label asp-for="CreateContract.TenantInQuestionId"></label>
+    <select asp-for="CreateContract.TenantInQuestionId">
+        <option value="" disabled>Select Tenant Name</option>
+        @foreach (var item in Model.CreateContract.TenantList)
+        {
+            <option value="@item.Id">@item.TenantName</option>
+        }
+    </select>
+    <span asp-validation-for="CreateContract.TenantInQuestionId"></span>
+
+    <label asp-for="CreateContract.RoomPrice"></label>
+    <input asp-for="CreateContract.RoomPrice" />
+    <span asp-validation-for="CreateContract.RoomPrice"></span>
+
+    <label asp-for="CreateContract.PaymentDate"></label>
+    <input asp-for="CreateContract.PaymentDate" />
+    <span asp-validation-for="CreateContract.PaymentDate"></span>
+
+    <label asp-for="CreateContract.StartDate"></label>
+    <input asp-for="CreateContract.StartDate" />
+    <span asp-validation-for="CreateContract.StartDate"></span>
+
+    <label asp-for="CreateContract.EndDate"></label>
+    <input asp-for="CreateContract.EndDate" />
+    <span asp-validation-for="CreateContract.EndDate"></span>
+
+
+    <input type="submit" value="Save changes" />
+
+</form>
+

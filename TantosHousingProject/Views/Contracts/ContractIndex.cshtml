@@ -21,15 +21,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>@item.RoomInQuestion.RoomNumber</td>
-            <td>@item.TenantInQuestion.TenantName</td>
-            <td>@item.RoomPrice</td>
-            <td>@item.PaymentDate</td>
-            <td>@item.StartDate</td>
-            <td>@item.EndDate</td>
-            <td></td>
-        </tr>
+            <partial name="../Shared/AllContractsPartialView" model="item" />
         }
     </tbody>
 </table>

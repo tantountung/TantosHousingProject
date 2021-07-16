@@ -1,4 +1,15 @@
-﻿
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Contract
+
+
+<tr>
+    <td>@Model.RoomInQuestion.RoomNumber</td>
+    <td>@Model.TenantInQuestion.TenantName</td>
+    <td>@Model.RoomPrice</td>
+    <td>@Model.PaymentDate</td>
+    <td>@Model.StartDate</td>
+    <td>@Model.EndDate</td>
+    <td>
+        <a asp-action="EditContract" asp-route-id="@Model.Id">Edit Contract</a> |
+        <a asp-action="ContractIndex">Back To List</a>
+    </td>
+</tr>

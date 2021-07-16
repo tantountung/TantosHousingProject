@@ -57,7 +57,10 @@ namespace TantosHousingProject.Controllers
         }
 
         // GET: ContractsController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int id)//no view for now since details has
+                                           //no purpose, unless RFI for payment history
+                                           //(payment is multiple so can be made to many
+                                           //with one is contract)
         {
             Contract contract = _contractService.FindById(id);
 
@@ -70,29 +73,43 @@ namespace TantosHousingProject.Controllers
         }
 
 
-        // GET: ContractsController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet]
+        public IActionResult EditContract(int id)
         {
-            return View();
+            Contract contract = _contractService.FindById(id);
+
+            if (contract == null)
+            {
+                return RedirectToAction("ContractIndex");
+            }
+
+            EditContractViewModel editContract = new EditContractViewModel();
+            editContract.Id = id;
+            editContract.CreateContract = _contractService.ContractToCreateContract(contract);
+
+            return View(editContract);
         }
 
-        // POST: ContractsController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult EditContract(int id, CreateContractViewModel createContract)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                Contract contract = _contractService.Edit(id, createContract);
+
+                return RedirectToAction(nameof(ContractIndex));
             }
-            catch
-            {
-                return View();
-            }
+
+            EditContractViewModel editContract = new EditContractViewModel();
+            editContract.Id = id;
+            editContract.CreateContract = createContract;
+
+            return View(editContract);
         }
 
         // GET: ContractsController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id)//RFI to delete
+                                          //(so far, no delete for all controllers)
         {
             return View();
         }

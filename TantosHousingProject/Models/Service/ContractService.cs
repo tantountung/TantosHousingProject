@@ -41,34 +41,77 @@ namespace TantosHousingProject.Models.Service
             return _contractRepo.Read();
         }
 
-        public CreateContractViewModel ContractToCreateContract(Contract contract)
-        {
-            throw new NotImplementedException();
-        }
 
         public Contract Edit(int id, CreateContractViewModel contract)
         {
-            throw new NotImplementedException();
+            Contract contractToUpdate = FindById(id);
+
+            if (contractToUpdate == null)
+            {
+                return null;
+            }
+            contractToUpdate.RoomInQuestionId = contract.RoomInQuestionId;
+            contractToUpdate.TenantInQuestionId = contract.TenantInQuestionId;
+            contractToUpdate.RoomPrice = contract.RoomPrice;
+            contractToUpdate.PaymentDate = contract.PaymentDate;
+            contractToUpdate.StartDate = contract.StartDate;
+            contractToUpdate.EndDate = contract.EndDate;
+
+            return _contractRepo.Update(contractToUpdate);
         }
 
         public Contract FindById(int id)
         {
-            throw new NotImplementedException();
+            return _contractRepo.Read(id);
         }
 
         public List<Contract> FindByRoomId(int RoomId)
         {
-            throw new NotImplementedException();
+            List<Contract> roomTypeList = new List<Contract>();
+
+            foreach (Contract item in _contractRepo.Read())
+            {
+                if (item.RoomInQuestionId.Equals(RoomId))
+                {
+                    roomTypeList.Add(item);
+                }
+            }
+
+            return roomTypeList;
         }
 
         public List<Contract> FindByTenantId(int TenantId)
         {
-            throw new NotImplementedException();
+            List<Contract> roomTypeList = new List<Contract>();
+
+            foreach (Contract item in _contractRepo.Read())
+            {
+                if (item.TenantInQuestionId.Equals(TenantId))
+                {
+                    roomTypeList.Add(item);
+                }
+            }
+
+            return roomTypeList;
         }
 
         public bool Remove(int id)
         {
-            throw new NotImplementedException();
+            return _contractRepo.Delete(id);
+        }
+
+        public CreateContractViewModel ContractToCreateContract(Contract contract)
+        {
+            CreateContractViewModel contractToUpdate = new CreateContractViewModel();
+
+            contractToUpdate.RoomInQuestionId = contract.RoomInQuestionId;
+            contractToUpdate.TenantInQuestionId = contract.TenantInQuestionId;
+            contractToUpdate.RoomPrice = contract.RoomPrice;
+            contractToUpdate.PaymentDate = contract.PaymentDate;
+            contractToUpdate.StartDate = contract.StartDate;
+            contractToUpdate.EndDate = contract.EndDate;
+
+            return contractToUpdate;
         }
     }
 }
