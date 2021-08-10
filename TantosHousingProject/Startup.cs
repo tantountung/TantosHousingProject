@@ -57,6 +57,24 @@ namespace TantosHousingProject
             services.AddScoped<IGenericRepo<Housekeeper>, HousekeeperRepo>();
             services.AddScoped<IGenericRepo<Contract>, ContractRepo>();
 
+            //-------------------------CORS----------------------
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("ReactPolicy",
+                    builder =>
+                    {
+                        builder.WithOrigins("*")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
+            });
+
+
+            //----------------Sawgger------------
+
+            services.AddSwaggerGen();
+
 
             services.AddMvc();
         }
@@ -77,8 +95,16 @@ namespace TantosHousingProject
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rooms API V1");
+            });
+
             app.UseRouting();
 
+            app.UseCors();
 
             app.UseAuthentication();//  Add this
             app.UseAuthorization();//  Add this too
