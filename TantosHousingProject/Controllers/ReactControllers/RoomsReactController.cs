@@ -15,12 +15,12 @@ namespace TantosHousingProject.Controllers
     [EnableCors("ReactPolicy")]
     [Route("api/[controller]")]
     [ApiController]
-    public class ReactController : ControllerBase
+    public class RoomsReactController : ControllerBase
     {
         private readonly IRoomService _roomService;
         //private readonly IContractService _contractService;
 
-        public ReactController(IRoomService roomService/* IContractService contractService*/)
+        public RoomsReactController(IRoomService roomService)
         {
             _roomService = roomService;
             //_contractService = contractService;
@@ -40,9 +40,14 @@ namespace TantosHousingProject.Controllers
             foreach (Contract contract in room.RoomHistory)
             {
                 contract.RoomInQuestion = null;
+
+                if (contract.TenantInQuestion != null)
+                {
+                    contract.TenantInQuestion.TenantHistory = null;
+                }
             }
-                  
-                        return room;
+
+            return room;
         }
 
         [HttpPost]
