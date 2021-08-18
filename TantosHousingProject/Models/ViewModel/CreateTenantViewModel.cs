@@ -14,6 +14,7 @@ namespace TantosHousingProject.Models.ViewModel
 
         [Required]
         [MaxLength(100)]
+
         public string TenantPhone { get; set; }
 
         [Required]

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,13 @@ namespace TantosHousingProject.Controllers
             _contractService = contractService;
         }
 
+        //[Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
-            List<Contract> contractList = _contractService.All();
+            if (User.Identity.IsAuthenticated)
+
+            {
+ List<Contract> contractList = _contractService.All();
             Contract lastContract = null;
 
             if (contractList.Count > 0)
@@ -32,8 +37,13 @@ namespace TantosHousingProject.Controllers
                 lastContract = contractList[contractList.Count - 1];
             }
 
-
             return View(lastContract);
+            }
+
+            else
+            {
+                return View("PropertyInfo");
+            }
         }
 
         public IActionResult PropertyInfo()

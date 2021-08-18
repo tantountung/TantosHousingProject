@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using TantosHousingProject.Models.ViewModel;
 
 namespace TantosHousingProject.Controllers
 {
+    
     public class ContractsController : Controller
     {
         private readonly IContractService _contractService;
@@ -27,7 +29,13 @@ namespace TantosHousingProject.Controllers
         // GET: ContractsController
         public ActionResult ContractIndex()
         {
-            return View(_contractService.All());
+            var model = _contractService.All();
+
+
+
+            return View(model);
+
+            //return View(_contractService.All());
         }
 
         // GET: ContractsController/Create
@@ -86,6 +94,11 @@ namespace TantosHousingProject.Controllers
             EditContractViewModel editContract = new EditContractViewModel();
             editContract.Id = id;
             editContract.CreateContract = _contractService.ContractToCreateContract(contract);
+            editContract.CreateContract.RoomList = roomService.All().RoomList;
+            editContract.CreateContract.TenantList = tenantService.All().TenantList;
+            //issue with saving solved, cause no list was provided before.
+            // list is line 97 and 98
+            //cannot save since no roo and tenant is provided
 
             return View(editContract);
         }

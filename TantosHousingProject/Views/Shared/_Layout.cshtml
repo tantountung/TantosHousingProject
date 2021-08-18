@@ -33,28 +33,30 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="PropertyInfo">Property Info</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Rooms" asp-action="RoomIndex">Room Index</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Tenants" asp-action="TenantIndex">Tenant Index</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Contracts" asp-action="ContractIndex">Contract Index</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Housekeepers" asp-action="HousekeeperIndex">Housekeeper Index</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
-                        </li>
-
                         @if (User.Identity.IsAuthenticated)
                         {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Rooms" asp-action="RoomIndex">Room Index</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Tenants" asp-action="TenantIndex">Tenant Index</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Contracts" asp-action="ContractIndex">Contract Index</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Housekeepers" asp-action="HousekeeperIndex">Housekeeper Index</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                            </li>
+
+                            @*@if (User.Identity.IsAuthenticated)
+            {*@
                             if (User.IsInRole("Admin"))
                             {
                                 <li class="nav-item">

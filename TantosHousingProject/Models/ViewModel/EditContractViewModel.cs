@@ -11,9 +11,9 @@ namespace TantosHousingProject.Models.ViewModel
 
         public CreateContractViewModel CreateContract { get; set; }
 
-        public EditContractViewModel()
-        {
-            CreateContract = new CreateContractViewModel();
-        }
+        //public EditContractViewModel()
+        //{
+        //    CreateContract = new CreateContractViewModel();
+        //}
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using TantosHousingProject.Models.ViewModel;
 
 namespace TantosHousingProject.Controllers
 {
+    
     public class HousekeepersController : Controller
     {
         private readonly IHousekeeperService _housekeeperService;

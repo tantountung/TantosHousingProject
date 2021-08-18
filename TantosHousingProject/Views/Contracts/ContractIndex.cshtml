@@ -6,7 +6,43 @@
 
 <a asp-action="CreateContract">Create new contract</a>
 
-<table>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-1">
+                <h5>Room Number</h5>
+            </div>
+            <div class="col-2">
+                <h5>Tenant Name</h5>
+            </div>
+            <div class="col-2">
+                <h5>Room Price</h5>
+            </div>
+            <div class="col-2">
+                <h5>Payment Date</h5>
+            </div>
+            <div class="col-2">
+                <h5>Start Date</h5>
+            </div>
+            <div class="col-2">
+                <h5>End Date</h5>
+            </div>
+            <div class="col-1">
+                <h5>Action</h5>
+            </div>
+        </div>
+
+        @foreach (var item in Model)
+        {
+            <partial name="../Shared/AllContractsPartialView" model="item" />
+        }     
+
+    </div>
+</div>
+
+@*<table>
     <thead>
         <tr>
             <th>Room Number</th>
@@ -17,11 +53,11 @@
             <th>End Date</th>
             <th>Action</th>
         </tr>
-    </thead>
-    <tbody>
+    </thead>*@
+    @*<tbody>
         @foreach (var item in Model)
         {
             <partial name="../Shared/AllContractsPartialView" model="item" />
         }
     </tbody>
-</table>
+</table>*@

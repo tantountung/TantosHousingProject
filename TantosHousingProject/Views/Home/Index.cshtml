@@ -10,12 +10,62 @@
 
 @if (Model != null)
 {
-<div class="row">
-    <div class="col-4">
-        <h3>Last contract made</h3>
+    @*<div class="row">
+        <div class="col-4">
+            <h3>Last contract made</h3>
+        </div>*@
+
+    <h1>Last contract made</h1>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-1">
+                    <h5>Room Number</h5>
+                </div>
+                <div class="col-2">
+                    <h5>Tenant Name</h5>
+                </div>
+                <div class="col-2">
+                    <h5>Room Price</h5>
+                </div>
+                <div class="col-2">
+                    <h5>Payment Date</h5>
+                </div>
+                <div class="col-2">
+                    <h5>Start Date</h5>
+                </div>
+                <div class="col-2">
+                    <h5>End Date</h5>
+                </div>
+                <div class="col-1">
+                    <h5>Action</h5>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-8">
-        <partial name="../Shared/AllContractsPartialView" model="Model" />
-    </div>
-</div>
+
+    <partial name="../Shared/AllContractsPartialView" model="Model" />
+
+    @*<div class="col-8">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Room Number</th>
+                            <th>Tenant Name</th>
+                            <th>Room Price</th>
+                            <th>Payment Date</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <partial name="../Shared/AllContractsPartialView" model="Model" />
+                    </tbody>
+                </table>
+            </div>
+        </div>*@
 }
