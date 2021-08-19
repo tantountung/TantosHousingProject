@@ -59,12 +59,12 @@ namespace TantosHousingProject.Models.Service
         {
             Contract newPerson = _contractRepo.Read(id);
 
-            if (newPerson != null)
+            //if (newPerson.RoomInQuestionId != null)
 
-            {
-                newPerson.RoomInQuestion.RoomHistory = null;
-                newPerson.TenantInQuestion.TenantHistory = null;
-            }
+            //{
+            //    newPerson.RoomInQuestion.RoomHistory = null;
+            //    newPerson.TenantInQuestion.TenantHistory = null;
+            //}
 
             return newPerson;
         }
