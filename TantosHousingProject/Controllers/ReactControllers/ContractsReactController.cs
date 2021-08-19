@@ -18,35 +18,41 @@ namespace TantosHousingProject.Controllers
     public class ContractsReactController : ControllerBase
     {
         private readonly IContractService _contractService;
-        //private readonly IContractService _contractService;
+        private readonly ITenantService _tenantService;
+        private readonly IRoomService _roomService;
+        
 
-        public ContractsReactController(IContractService contractService)
+        public ContractsReactController(IContractService contractService, IRoomService roomService, ITenantService tenantService)
         {
             _contractService = contractService;
-            //_contractService = contractService;
+            _roomService = roomService;
+            _tenantService = tenantService;
         }
 
         [HttpGet]
         public List<Contract> Get()
         {
-            return _contractService.All();
+            return _contractService.JsonAll();
         }
 
         [HttpGet("{id}")]
         public Contract GetById(int id)
         {
-            Contract contract = _contractService.FindById(id);
-
-            if (contract != null)
-            {
-                contract.RoomInQuestion.RoomHistory = null;
-                contract.TenantInQuestion.TenantHistory = null;
-
-                return contract;
-            }
-
-            throw new Exception("unable to find contract in the database");
+            return _contractService.JsonFindBy(id);
         }
+
+        //    Contract contract = _contractService.FindById(id);
+
+        //    if (contract != null)
+        //    {
+        //        contract.RoomInQuestion.RoomHistory = null;
+        //        contract.TenantInQuestion.TenantHistory = null;
+
+        //        return contract;
+        //    }
+
+        //    throw new Exception("unable to find contract in the database");
+        //}
 
         [HttpPost]
         public ActionResult<Contract> Create([FromBody] CreateContractViewModel contract)
@@ -72,6 +78,23 @@ namespace TantosHousingProject.Controllers
                 Response.StatusCode = 400;
             }
         }
+
+        //----------------------- Room -----------------------
+
+        [HttpGet("Rooms")]
+        public List<Room> GetRooms()
+        {
+            return _roomService.JsonAll();
+        }
+
+        //----------------------- Tenant -----------------------
+
+        [HttpGet("Tenants")]
+        public List<Tenant> GetTenants()
+        {
+            return  _tenantService.JsonAll();
+        }
+
 
 
     }

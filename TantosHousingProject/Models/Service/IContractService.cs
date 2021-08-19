@@ -14,6 +14,10 @@ namespace TantosHousingProject.Models.Service
 
         List<Contract> All();
 
+        List<Contract> JsonAll();
+
+        Contract JsonFindBy(int id);
+
         Contract FindById(int id);
 
         List<Contract> FindByRoomId(int RoomId);

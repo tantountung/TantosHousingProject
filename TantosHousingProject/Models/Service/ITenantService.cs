@@ -15,7 +15,7 @@ namespace TantosHousingProject.Models.Service
 
         Tenant FindById(int id);
 
-
+        public List<Tenant> JsonAll();
         List<Tenant> FindByTenantName(string tenantName);
 
         Tenant Edit(int id, CreateTenantViewModel tenant);

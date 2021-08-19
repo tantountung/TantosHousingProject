@@ -98,7 +98,7 @@ namespace TantosHousingProject.Controllers
             editContract.CreateContract.TenantList = tenantService.All().TenantList;
             //issue with saving solved, cause no list was provided before.
             // list is line 97 and 98
-            //cannot save since no roo and tenant is provided
+            //cannot save since no room and tenant is provided
 
             return View(editContract);
         }

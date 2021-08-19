@@ -48,10 +48,14 @@ namespace TantosHousingProject.Models.Data
         [Required]
         public Tenant TenantInQuestion { get; set; }
 
-        public Contract()
-        {
+        //public Contract()
+        //{
+        //    RoomInQuestion = new Room();
+        //    TenantInQuestion = new Tenant();
+        //    RoomInQuestionId = new int();
+        //    TenantInQuestionId = new int();
 
-        }
+        //}
 
 
     }

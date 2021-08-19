@@ -15,7 +15,7 @@ namespace TantosHousingProject.Models.Service
 
         Room FindById(int id);
 
-
+        public List<Room> JsonAll();
         List<Room> FindByType(string type);
 
         Room Edit(int id, CreateRoomViewModel room);

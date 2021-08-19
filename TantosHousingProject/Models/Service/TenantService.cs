@@ -39,7 +39,18 @@ namespace TantosHousingProject.Models.Service
             return vm;
         }
 
+        public List<Tenant> JsonAll()
+        {
+            List<Tenant> newList = _tenantRepo.Read();//if in controller, must be _cityService
 
+            foreach (var city in newList)
+            {
+                city.TenantHistory = null;
+
+            }
+
+            return newList;
+        }
         public Tenant FindById(int id)
         {
             return _tenantRepo.Read(id);

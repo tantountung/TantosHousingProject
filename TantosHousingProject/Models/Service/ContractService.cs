@@ -17,8 +17,8 @@ namespace TantosHousingProject.Models.Service
         public ContractService(IGenericRepo<Contract> contractRepo, IGenericRepo<Tenant> tenantRepo, IGenericRepo<Room> roomRepo)
         {
             _contractRepo = contractRepo;
-          _tenantRepo = tenantRepo;
-           _roomRepo = roomRepo;
+            _tenantRepo = tenantRepo;
+            _roomRepo = roomRepo;
         }
 
 
@@ -41,6 +41,33 @@ namespace TantosHousingProject.Models.Service
             return _contractRepo.Read();
         }
 
+        public List<Contract> JsonAll()//created to avoid infinite loop,
+
+        {
+            List<Contract> newList = _contractRepo.Read();
+
+            foreach (var person in newList)
+            {
+                person.RoomInQuestion.RoomHistory = null;
+                person.TenantInQuestion.TenantHistory = null;
+            }
+
+            return newList;
+        }
+
+        public Contract JsonFindBy(int id)
+        {
+            Contract newPerson = _contractRepo.Read(id);
+
+            if (newPerson != null)
+
+            {
+                newPerson.RoomInQuestion.RoomHistory = null;
+                newPerson.TenantInQuestion.TenantHistory = null;
+            }
+
+            return newPerson;
+        }
 
         public Contract Edit(int id, CreateContractViewModel contract)
         {

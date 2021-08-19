@@ -44,6 +44,22 @@ namespace TantosHousingProject.Models.Repo
 
         }
 
+        public List<Contract> JsonRead()
+        {
+            List<Contract> newList =  tHPDbContext.Contracts
+                .Include("Room")
+                .Include("Tenant")
+                .ToList();
+
+            foreach (var person in newList)
+            {
+                person.RoomInQuestion.RoomHistory = null;
+                person.TenantInQuestion.TenantHistory = null;
+            }
+
+            return newList;
+        }
+
         public Contract Update(Contract contract)
         {
             Contract newContract = Read(contract.Id);

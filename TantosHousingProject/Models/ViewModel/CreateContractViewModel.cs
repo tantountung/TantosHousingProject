@@ -24,11 +24,11 @@ namespace TantosHousingProject.Models.ViewModel
         public DateTime EndDate { get; set; }
         //Ulf will check how to disable browser setting for end date
 
-        [Required]
+        //[Required]
         public int RoomInQuestionId { get; set; }
 
 
-        [Required]
+        //[Required]
         public int TenantInQuestionId { get; set; }
 
         public List<Room> RoomList { get; set; }
@@ -39,6 +39,8 @@ namespace TantosHousingProject.Models.ViewModel
         {
             RoomList = new List<Room>();
             TenantList = new List<Tenant>();
+            RoomInQuestionId = new int();
+            TenantInQuestionId = new int();
         }
     }
 }
