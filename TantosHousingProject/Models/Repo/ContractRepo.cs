@@ -18,7 +18,8 @@ namespace TantosHousingProject.Models.Repo
         }
 
         public Contract Create(Contract contract)
-        {           
+        {
+           
             tHPDbContext.Contracts.Add(contract);
 
             int result = tHPDbContext.SaveChanges();

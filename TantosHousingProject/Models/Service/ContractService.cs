@@ -26,8 +26,40 @@ namespace TantosHousingProject.Models.Service
         {
             Contract contract = new Contract();
 
+            //var mode = _roomRepo.Read(createContract.RoomInQuestionId);
+
+            //if (mode != null)
+            //{
+
+            //    mode.RoomHistory = null;
+            //    //mode = mode;
+            //}
+
+            //contract.RoomInQuestion = mode;
+
+
             contract.RoomInQuestion = _roomRepo.Read(createContract.RoomInQuestionId);
+
+            //            if (contract.RoomInQuestion != null)
+            //            {
+            //contract.RoomInQuestion.RoomHistory = null;
+            //            }
+
+
             contract.TenantInQuestion = _tenantRepo.Read(createContract.TenantInQuestionId);
+
+            //var modex = _tenantRepo.Read(createContract.TenantInQuestionId);
+
+            //if (modex != null)
+            //{
+            //    modex.TenantHistory = null;
+            //    modex = modex;
+            //}
+
+            //contract.TenantInQuestion = modex;
+
+            //contract.TenantInQuestion.TenantHistory = null;
+
             contract.RoomPrice = createContract.RoomPrice;
             contract.PaymentDate = createContract.PaymentDate;
             contract.StartDate = createContract.StartDate;

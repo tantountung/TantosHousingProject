@@ -20,7 +20,7 @@ namespace TantosHousingProject.Controllers
         private readonly IContractService _contractService;
         private readonly ITenantService _tenantService;
         private readonly IRoomService _roomService;
-        
+
 
         public ContractsReactController(IContractService contractService, IRoomService roomService, ITenantService tenantService)
         {
@@ -60,6 +60,14 @@ namespace TantosHousingProject.Controllers
             //ModelState.isValid
             if (ModelState.IsValid)
             {
+
+
+                if (contract != null)
+                {
+                    contract.RoomList = null;
+                    contract.TenantList = null;
+                }
+
                 return _contractService.Add(contract);
             }
 
@@ -92,7 +100,7 @@ namespace TantosHousingProject.Controllers
         [HttpGet("Tenants")]
         public List<Tenant> GetTenants()
         {
-            return  _tenantService.JsonAll();
+            return _tenantService.JsonAll();
         }
 
 
