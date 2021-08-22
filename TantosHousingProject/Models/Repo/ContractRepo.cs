@@ -35,13 +35,19 @@ namespace TantosHousingProject.Models.Repo
 
         public Contract Read(int id)
         {         
-            return tHPDbContext.Contracts.SingleOrDefault(row => row.Id == id);
+            return tHPDbContext.Contracts
+                    .Include(row => row.RoomInQuestion)
+                .Include(row => row.TenantInQuestion)
+                .SingleOrDefault(row => row.Id == id);
         }
 
         public List<Contract> Read()
         {
 
-            return tHPDbContext.Contracts.Include(row => row.RoomInQuestion).Include( row => row.TenantInQuestion).ToList();
+            return tHPDbContext.Contracts
+                .Include(row => row.RoomInQuestion)
+                .Include( row => row.TenantInQuestion)
+                .ToList();
 
         }
 
