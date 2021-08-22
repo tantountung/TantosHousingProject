@@ -9,7 +9,7 @@ namespace TantosHousingProject.Models.Data
     public class Room
     {
         [Key]
-       public int Id { get; set; }
+       public int RoomInQuestionId { get; set; }
         
         [Required]
         public double RoomNumber { get; set; }

@@ -26,24 +26,24 @@ namespace TantosHousingProject.Controllers
         //[Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
+ //           if (User.Identity.IsAuthenticated)
 
-            {
- List<Contract> contractList = _contractService.All();
-            Contract lastContract = null;
+ //           {
+ //List<Contract> contractList = _contractService.All();
+ //           Contract lastContract = null;
 
-            if (contractList.Count > 0)
-            {
-                lastContract = contractList[contractList.Count - 1];
-            }
+ //           if (contractList.Count > 0)
+ //           {
+ //               lastContract = contractList[contractList.Count - 1];
+ //           }
 
-            return View(lastContract);
-            }
+ //           return View(lastContract);
+ //           }
 
-            else
-            {
+ //           else
+ //           {
                 return View("PropertyInfo");
-            }
+            //}
         }
 
         public IActionResult PropertyInfo()

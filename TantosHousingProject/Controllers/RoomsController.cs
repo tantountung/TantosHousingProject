@@ -76,7 +76,7 @@ namespace TantosHousingProject.Controllers
             }
 
             EditRoomViewModel editRoom = new EditRoomViewModel();
-            editRoom.Id = id;
+            editRoom.RoomInQuestionId = id;
             editRoom.CreateRoom = _roomService.RoomToCreateRoom(room);
 
             return View(editRoom);
@@ -93,7 +93,7 @@ namespace TantosHousingProject.Controllers
             }
 
             EditRoomViewModel editRoom = new EditRoomViewModel();
-            editRoom.Id = id;
+            editRoom.RoomInQuestionId = id;
             editRoom.CreateRoom = createRoom;
 
             return View(editRoom);

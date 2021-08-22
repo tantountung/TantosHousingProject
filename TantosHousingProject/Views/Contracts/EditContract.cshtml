@@ -14,7 +14,7 @@
         <option value="" disabled>Select Room Number</option>
         @foreach (var item in Model.CreateContract.RoomList)
         {
-            <option value="@item.Id">@item.RoomNumber</option>
+            <option value="@item.RoomInQuestionId">@item.RoomNumber</option>
         }
     </select>
     <span asp-validation-for="CreateContract.RoomInQuestionId"></span>
@@ -24,7 +24,7 @@
         <option value="" disabled>Select Tenant Name</option>
         @foreach (var item in Model.CreateContract.TenantList)
         {
-            <option value="@item.Id">@item.TenantName</option>
+            <option value="@item.TenantInQuestionId">@item.TenantName</option>
         }
     </select>
     <span asp-validation-for="CreateContract.TenantInQuestionId"></span>

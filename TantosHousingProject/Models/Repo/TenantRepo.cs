@@ -35,7 +35,7 @@ namespace TantosHousingProject.Models.Repo
         {
             return _tHPDbContext.Tenants.Include(tenant => tenant.TenantHistory)
                 .ThenInclude(contract => contract.RoomInQuestion)
-                .SingleOrDefault(row => row.Id == id);
+                .SingleOrDefault(row => row.TenantInQuestionId == id);
         }
 
         public List<Tenant> Read()
@@ -45,7 +45,7 @@ namespace TantosHousingProject.Models.Repo
 
         public Tenant Update(Tenant modelName)
         {
-            Tenant newContract = Read(modelName.Id);
+            Tenant newContract = Read(modelName.TenantInQuestionId);
 
             if (newContract == null)
             {

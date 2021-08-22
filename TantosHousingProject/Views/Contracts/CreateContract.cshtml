@@ -16,7 +16,7 @@
                 <select asp-for="RoomInQuestionId">
                     @foreach (var item in Model.RoomList)
                     {
-                    <option value="@item.Id">@item.RoomNumber</option>
+                    <option value="@item.RoomInQuestionId">@item.RoomNumber</option>
                     }
                 </select>
             </div>
@@ -25,7 +25,7 @@
                 <select asp-for="TenantInQuestionId">
                     @foreach (var item in Model.TenantList)
                     {
-                        <option value="@item.Id">@item.TenantName</option>
+                        <option value="@item.TenantInQuestionId">@item.TenantName</option>
                     }
                 </select>
             </div>

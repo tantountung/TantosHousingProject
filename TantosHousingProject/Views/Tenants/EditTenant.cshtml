@@ -6,7 +6,7 @@
 <h1>Edit Tenant</h1>
 
 
-<form asp-action="EditTenant" asp-route-id="@Model.Id" method="post">
+<form asp-action="EditTenant" asp-route-id="@Model.TenantInQuestionId" method="post">
 
     <label asp-for="CreateTenant.TenantName"></label>
     <input asp-for="CreateTenant.TenantName" />

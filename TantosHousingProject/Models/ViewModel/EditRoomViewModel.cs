@@ -7,7 +7,7 @@ namespace TantosHousingProject.Models.ViewModel
 {
     public class EditRoomViewModel
     {
-        public int Id { get; set; }
+        public int RoomInQuestionId { get; set; }
 
         public CreateRoomViewModel CreateRoom { get; set; }
 

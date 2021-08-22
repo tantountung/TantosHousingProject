@@ -9,7 +9,7 @@ namespace TantosHousingProject.Models.Data
     public class Tenant
     {
         [Key]
-        public int Id { get; set; }
+        public int TenantInQuestionId { get; set; }
 
         [Required]
         [MaxLength(100)]

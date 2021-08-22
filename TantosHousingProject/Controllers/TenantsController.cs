@@ -77,7 +77,7 @@ namespace TantosHousingProject.Controllers
             }
 
             EditTenantViewModel editTenant = new EditTenantViewModel();
-            editTenant.Id = id;
+            editTenant.TenantInQuestionId = id;
             editTenant.CreateTenant = _tenantService.TenantToCreateTenant(tenant);
 
             return View(editTenant);
@@ -94,7 +94,7 @@ namespace TantosHousingProject.Controllers
             }
 
             EditTenantViewModel editTenant = new EditTenantViewModel();
-            editTenant.Id = id;
+            editTenant.TenantInQuestionId = id;
             editTenant.CreateTenant = createTenant;
 
             return View(editTenant);
