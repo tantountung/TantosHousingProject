@@ -8,7 +8,7 @@ using TantosHousingProject.Models.Data;
 
 namespace TantosHousingProject.Models.Repo
 {
-    public class ContractRepo : IGenericRepo <Contract>
+    public class ContractRepo : IGenericRepo<Contract>
     {
         private readonly THPDbContext tHPDbContext;
 
@@ -19,10 +19,20 @@ namespace TantosHousingProject.Models.Repo
 
         public Contract Create(Contract contract)
         {
-           
+
             tHPDbContext.Contracts.Add(contract);
 
-            int result = tHPDbContext.SaveChanges();
+            int result = -1;
+
+            try
+            {
+                result = tHPDbContext.SaveChanges();
+            }
+            catch (Exception after)
+            {
+
+                throw;
+            }
 
             if (result == 0)
             {
@@ -31,10 +41,10 @@ namespace TantosHousingProject.Models.Repo
 
             return contract;
         }
-               
+
 
         public Contract Read(int id)
-        {         
+        {
             return tHPDbContext.Contracts
                     .Include(row => row.RoomInQuestion)
                 .Include(row => row.TenantInQuestion)
@@ -46,14 +56,14 @@ namespace TantosHousingProject.Models.Repo
 
             return tHPDbContext.Contracts
                 .Include(row => row.RoomInQuestion)
-                .Include( row => row.TenantInQuestion)
+                .Include(row => row.TenantInQuestion)
                 .ToList();
 
         }
 
         public List<Contract> JsonRead()
         {
-            List<Contract> newList =  tHPDbContext.Contracts
+            List<Contract> newList = tHPDbContext.Contracts
                 .Include("Room")
                 .Include("Tenant")
                 .ToList();
@@ -94,8 +104,8 @@ namespace TantosHousingProject.Models.Repo
 
             return newContract;
         }
-        
-        
+
+
         public bool Delete(int id)
         {
             Contract newContract = Read(id);

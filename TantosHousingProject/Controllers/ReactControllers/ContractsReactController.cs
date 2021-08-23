@@ -61,15 +61,18 @@ namespace TantosHousingProject.Controllers
             if (ModelState.IsValid)
             {
 
+                var contractMade = _contractService.Add(contract);
+                //if inf loop - fix here
 
-                if (contract != null)
-                {
-                    contract.RoomList = null;
-                    contract.TenantList = null;
-                }
+                contractMade.RoomInQuestion.RoomHistory = null;
+                contractMade.TenantInQuestion.TenantHistory = null;
 
-                return _contractService.Add(contract);
+                return contractMade;
+
+
             }
+
+
 
             return BadRequest(contract);
         }
